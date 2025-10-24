@@ -295,6 +295,113 @@ footer small{
 h1, h2, h3, h4, h5, h6,
 .card strong,
 .section h2{ text-transform:capitalize; font-variant:normal; letter-spacing:.3px }
+/* ===== Services grid ===== */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:22px;
+  margin-top:14px;
+}
+
+/* ===== Service card ===== */
+.svc-card{
+  --rail: var(--accent);                  /* per-card rail colour */
+  position:relative;
+  display:flex; flex-direction:column;
+  gap:14px;
+  padding:18px 18px 16px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:0 10px 24px rgba(15,23,42,.06);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s;
+  overflow:hidden;
+  min-height: 320px;
+}
+.svc-card:hover{
+  transform: translateY(-4px);
+  box-shadow:0 18px 40px rgba(15,23,42,.10);
+  border-color: rgba(37,99,235,.22);
+}
+
+/* coloured top rail + animation */
+.svc-rail{
+  position:absolute; inset:0 0 auto 0;
+  height:4px; background: var(--rail);
+  transform-origin:left;
+  transform: scaleX(.9);
+  transition: transform .25s ease;
+}
+.svc-card:hover .svc-rail{ transform: scaleX(1); }
+
+/* "Most popular" badge */
+.svc-card .badge{
+  position:absolute; top:10px; right:10px;
+  background: var(--accent2);
+  color:#fff; font-weight:700;
+  font-size:12px; letter-spacing:.2px;
+  padding:6px 10px; border-radius:999px;
+  box-shadow:0 6px 16px rgba(16,185,129,.25);
+}
+
+/* header with emoji icon */
+.svc-header{ display:flex; align-items:flex-start; gap:12px; }
+.svc-header::before{
+  content: attr(data-icon);
+  flex:0 0 auto;
+  font-size:22px;
+  line-height:1;
+  display:grid; place-items:center;
+  width:38px; height:38px;
+  border-radius:12px;
+  background:#f1f5f9;
+  border:1px solid #e5e7eb;
+}
+.svc-header h3{
+  font-size: clamp(18px, 2vw, 20px);
+  margin:0 0 2px; line-height:1.15;
+}
+.svc-kicker{
+  margin:0; color:#64748b; font-size:14.5px;
+}
+
+/* bullet list with ticks */
+.svc-list{
+  margin:2px 0 0; padding-left:0;
+  list-style:none; color:#334155;
+  display:flex; flex-direction:column; gap:10px;
+}
+.svc-list li{
+  position:relative; padding-left:26px;
+}
+.svc-list li::before{
+  content:"";
+  position:absolute; left:0; top:.4em;
+  width:16px; height:16px; border-radius:50%;
+  background: radial-gradient(circle at 60% 40%, #fff 40%, #fff0 41%),
+              var(--rail);
+  box-shadow: 0 0 0 2px #e5f4ff inset;
+}
+
+/* little chips under list */
+.svc-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:-2px; }
+.chip{
+  font-size:12px; color:#0b1220;
+  border:1px solid #e5e7eb;
+  padding:6px 10px; border-radius:999px;
+  background:#fff;
+}
+
+/* pin CTA to bottom */
+.svc-cta{ margin-top:auto; }
+.svc-cta .btn{ width:auto; }
+
+/* reduce card glow on very small screens */
+@media (max-width: 520px){
+  .svc-card{ box-shadow:0 8px 16px rgba(15,23,42,.06); }
+}
+
+    
 </style>
 
 </head>
@@ -359,40 +466,84 @@ h1, h2, h3, h4, h5, h6,
     Straightforward support for UK SMEs — whether you need a quick rescue, a fully managed bid, or help building long-term capability.
   </p>
 
-  <div class="grid cards">
-    <!-- 1️⃣ Quick Support -->
-    <div class="card">
-      <strong>Quick Support</strong>
-      <ul class="list">
-        <li>48-hour bid review or rescue</li>
-        <li>Go/No-Go readiness check</li>
-        <li>Score-uplift and feedback advice</li>
-        <li><a class="btn ghost" href="#contact">Need urgent help</a></li>
-      </ul>
+ <div class="services-grid">
+  <!-- Quick Support -->
+  <article class="svc-card" style="--rail: var(--accent);">
+    <div class="svc-rail"></div>
+
+    <header class="svc-header" data-icon="🚑">
+      <h3>Quick Support</h3>
+      <p class="svc-kicker">For urgent deadlines & triage</p>
+    </header>
+
+    <ul class="svc-list">
+      <li>48-hour bid review or rescue</li>
+      <li>Go/No-Go readiness check</li>
+      <li>Score-uplift and feedback advice</li>
+    </ul>
+
+    <div class="svc-tags">
+      <span class="chip">Fast turn</span>
+      <span class="chip">Fixed fee</span>
     </div>
 
-    <!-- 2️⃣ Full Bid Writing -->
-    <div class="card">
-      <strong>Full Bid Writing</strong>
-      <ul class="list">
-        <li>End-to-end drafting and submission</li>
-        <li>Storyboards, win themes, compliance mapping</li>
-        <li>Social value, policies and scoring criteria covered</li>
-        <li><a class="btn ghost" href="#contact">Start my bid</a></li>
-      </ul>
+    <footer class="svc-cta">
+      <a class="btn ghost" href="#contact">Need urgent help</a>
+    </footer>
+  </article>
+
+  <!-- Full Bid Writing (Most popular) -->
+  <article class="svc-card popular" style="--rail: var(--accent2);">
+    <div class="svc-rail"></div>
+    <span class="badge">Most popular</span>
+
+    <header class="svc-header" data-icon="✍️">
+      <h3>Full Bid Writing</h3>
+      <p class="svc-kicker">End-to-end drafting & submission</p>
+    </header>
+
+    <ul class="svc-list">
+      <li>Storyboards, win themes, compliance mapping</li>
+      <li>Drafting to scoring criteria</li>
+      <li>Social value, policies and scoring criteria covered</li>
+    </ul>
+
+    <div class="svc-tags">
+      <span class="chip">Scored answers</span>
+      <span class="chip">Portal ready</span>
     </div>
 
-    <!-- 3️⃣ Build Capability -->
-    <div class="card">
-      <strong>Build Capability</strong>
-      <ul class="list">
-        <li>1-day SME bid bootcamp</li>
-        <li>Templates, trackers and policy packs</li>
-        <li>Answer bank and pipeline setup</li>
-        <li><a class="btn ghost" href="#contact">Train my team</a></li>
-      </ul>
+    <footer class="svc-cta">
+      <a class="btn primary" href="#contact">Start my bid</a>
+    </footer>
+  </article>
+
+  <!-- Build Capability -->
+  <article class="svc-card" style="--rail: #3b82f6;">
+    <div class="svc-rail"></div>
+
+    <header class="svc-header" data-icon="🧰">
+      <h3>Build Capability</h3>
+      <p class="svc-kicker">Train team & set up toolkits</p>
+    </header>
+
+    <ul class="svc-list">
+      <li>1-day SME bid bootcamp</li>
+      <li>Templates, trackers and policy packs</li>
+      <li>Answer bank and pipeline setup</li>
+    </ul>
+
+    <div class="svc-tags">
+      <span class="chip">Upskill</span>
+      <span class="chip">Repeatable</span>
     </div>
-  </div>
+
+    <footer class="svc-cta">
+      <a class="btn ghost" href="#contact">Train my team</a>
+    </footer>
+  </article>
+</div>
+
 </section>
   <!-- HOW IT WORKS -->
 <section id="process" class="section container">
