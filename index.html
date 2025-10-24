@@ -293,6 +293,69 @@ header .logo, .logo{
   .step__num{ margin:0 auto 8px; position:relative; top:-30px; }
   .step__card{ padding:16px 18px; }
 }
+/* === Process (rich look) =================================== */
+.process-steps.process--rich{
+  --bg-rail: linear-gradient(90deg,var(--accent) 0%, var(--accent2) 100%);
+  position: relative;
+}
+
+/* desktop rail */
+@media (min-width:980px){
+  .process-steps.process--rich::before{
+    content:"";
+    position:absolute; left:0; right:0;
+    top:42px; height:6px; border-radius:3px;
+    background: var(--bg-rail);
+    box-shadow:0 8px 18px rgba(37,99,235,.18);
+  }
+}
+
+/* step colour palette (per position) */
+.process-steps.process--rich .step:nth-child(1){ --step:#3b82f6; } /* blue  */
+.process-steps.process--rich .step:nth-child(2){ --step:#10b981; } /* green */
+.process-steps.process--rich .step:nth-child(3){ --step:#f59e0b; } /* amber */
+.process-steps.process--rich .step:nth-child(4){ --step:#8b5cf6; } /* purple*/
+.process-steps.process--rich .step:nth-child(5){ --step:#ef4444; } /* red    */
+
+/* number chip gets a coloured gradient + soft glow */
+.process-steps.process--rich .step__num{
+  border:0;
+  color:#fff;
+  font-weight:800;
+  background: radial-gradient(circle at 65% 35%, #fff6 0 40%, transparent 41%),
+              radial-gradient(circle at 50% 120%, #00000020 0 35%, transparent 36%),
+              var(--step);
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--step) 28%, transparent);
+}
+
+/* card gets a coloured left rail + faint tint */
+.process-steps.process--rich .step__card{
+  border:1px solid color-mix(in srgb, var(--step) 24%, var(--line));
+  background: color-mix(in srgb, var(--step) 6%, #fff);
+  position: relative;
+}
+.process-steps.process--rich .step__card::before{
+  content:"";
+  position:absolute; left:0; top:0; bottom:0; width:6px;
+  border-top-left-radius:16px; border-bottom-left-radius:16px;
+  background: var(--step);
+}
+
+/* hover polish */
+.process-steps.process--rich .step__card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px color-mix(in srgb, var(--step) 20%, rgba(15,23,42,.10));
+}
+
+/* mobile rail + spacing tune */
+@media (max-width:979.98px){
+  .process-steps.process--rich::before{
+    content:"";
+    position:absolute; left:22px; top:10px; bottom:10px; width:4px;
+    background: var(--bg-rail); border-radius:2px;
+    box-shadow:0 8px 18px rgba(37,99,235,.12);
+  }
+}
 
 /* ===============================
    FAQ accordion (stable)
@@ -497,7 +560,7 @@ h1, h2, h3, h4, h5, h6, .card strong, .section h2{
   <h2>How It Works</h2>
   <p class="muted">Every bid follows a clear, calm process — from first idea to final submission.</p>
 
-  <ol class="process-steps">
+  <ol class="process-steps process--rich">  
     <li class="step">
       <div class="step__num">1</div>
       <div class="step__card"><h3>Discovery</h3><p>We talk through the opportunity, timeline and goals.</p></div>
