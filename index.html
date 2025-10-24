@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>securetender | Tender Writing for UK SMEs</title>
-  <meta name="description" content="Plain‑English tender and bid writing for UK SMEs. Go/No‑Go triage, end‑to‑end drafting, Social Value, portals (Atamis, Jaggaer, Proactis, Bravo, Delta). Free bid review." />
+  <title>SecureTender | Tender Writing for UK SMEs</title>
+  <meta name="description" content="Plain-English tender and bid writing for UK SMEs. Go/No-Go triage, end-to-end drafting, Social Value, portals (Atamis, Jaggaer, Proactis, Bravo, Delta). Free bid review." />
   <link rel="icon" href="data:,">
- <style>
+  <style>
 /* ===============================
    Design tokens / variables
 =================================*/
 :root{
-  --ink:#0b1220;          /* text (navy) */
-  --muted:#475569;        /* secondary text */
-  --line:#e5e7eb;         /* borders */
-  --bg:#ffffff;           /* page background */
+  --ink:#0b1220;
+  --muted:#475569;
+  --line:#e5e7eb;
+  --bg:#ffffff;
 
-  --accent:#2563eb;       /* BLUE (primary) */
-  --accent-ink:#ffffff;   /* text on blue */
-  --accent2:#10b981;      /* GREEN (success) */
+  --accent:#2563eb;      /* blue */
+  --accent-ink:#ffffff;
+  --accent2:#10b981;     /* green */
 
   --radius:18px;
   --shadow:0 10px 24px rgba(15,23,42,.06);
@@ -38,7 +38,7 @@ a:hover{ color:var(--accent); opacity:.95 }
 header{ display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap }
 nav a{ margin:0 10px }
 
-/* Logo wordmark (if you ever show text) */
+/* Logo wordmark */
 header .logo, .logo{
   font-family:'Poppins','Segoe UI',sans-serif;
   font-weight:700;
@@ -48,7 +48,7 @@ header .logo, .logo{
 }
 
 /* ===============================
-   Buttons
+   Buttons + inputs
 =================================*/
 .btn{ display:inline-block; padding:11px 16px; border-radius:999px; border:1px solid var(--ink); text-decoration:none; transition:.2s }
 .btn.primary{ background:var(--accent); color:var(--accent-ink); border-color:var(--accent) }
@@ -60,699 +60,258 @@ header .logo, .logo{
 .btn-lg{ padding:14px 20px; font-size:1rem; }
 .btn-block{ display:block; width:100%; text-align:center; }
 
+.input{
+  width:100%; padding:12px 14px;
+  border:1px solid var(--line); border-radius:12px;
+  font:inherit; color:inherit; background:#fff;
+}
+
 /* ===============================
    HERO (split layout with proof card)
 =================================*/
-/* base hero */
 .hero{
   background: linear-gradient(180deg,#dbeafe 0%, #ecfdf5 100%);
   border-bottom:1px solid var(--line);
-  padding:56px 20px;         /* mobile spacing */
+  padding:56px 20px;
 }
-
-/* inner container */
 .hero__inner{ max-width:var(--max); margin:0 auto; }
-
-/* content alignment */
 .hero__content{ text-align:center; }
+
 @media (min-width:980px){
-  .hero{ 
-    min-height:86vh; 
-    display:grid; 
-    place-items:center; 
-    padding:72px 20px 88px; 
-  }
-  .hero--split .hero__inner{
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    align-items:center;
-    gap:56px;
-  }
+  .hero{ min-height:86vh; display:grid; place-items:center; padding:72px 20px 88px; }
+  .hero--split .hero__inner{ display:grid; grid-template-columns:1.1fr 0.9fr; align-items:center; gap:56px; }
   .hero__content{ text-align:left; }
 }
 
-/* kicker chip */
 .kicker{
-  display:inline-block;
-  font-weight:700;
-  font-size:.95rem;
-  letter-spacing:.4px;
-  color:var(--accent2);
-  background:#eafff6;
-  border:1px solid #baf2df;
-  padding:6px 10px;
-  border-radius:999px;
-  margin-bottom:12px;
+  display:inline-block; font-weight:700; font-size:.95rem; letter-spacing:.4px;
+  color:var(--accent2); background:#eafff6; border:1px solid #baf2df;
+  padding:6px 10px; border-radius:999px; margin-bottom:12px;
 }
-
-/* headline + subhead */
 .hero h1{
-  font-weight:800;
-  letter-spacing:-0.02em;
-  line-height:1.05;
-  margin:4px 0 14px;
-  font-size:clamp(34px,6.3vw,72px);
-  color:#0b1220;
-  max-width:700px;
+  font-weight:800; letter-spacing:-0.02em; line-height:1.05;
+  margin:4px 0 14px; font-size:clamp(34px,6.3vw,72px); color:#0b1220; max-width:700px;
 }
 .hero .subhead{
-  color:var(--muted);
-  max-width:680px;
-  margin:0 auto 18px;
-  font-size:clamp(1rem, 1.3vw, 1.2rem);
+  color:var(--muted); max-width:680px; margin:0 auto 18px; font-size:clamp(1rem, 1.3vw, 1.2rem);
 }
-@media (min-width:980px){
-  .hero .subhead{ margin-left:0; }
-}
+@media (min-width:980px){ .hero .subhead{ margin-left:0; } }
 
-/* CTAs */
-.row.cta{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  margin-top:8px;
-  flex-wrap:wrap;
-}
-@media (min-width:980px){
-  .row.cta{ justify-content:flex-start; }
-}
+.row.cta{ display:flex; justify-content:center; gap:14px; margin-top:8px; flex-wrap:wrap; }
+@media (min-width:980px){ .row.cta{ justify-content:flex-start; } }
 
-/* small hero benefits row */
 .hero-points{
-  display:grid;
-  grid-auto-flow:column;
-  gap:18px;
-  justify-content:center;
-  margin:18px 0 0;
-  padding:0;
-  list-style:none;
-  font-size:.98rem;
-  color:#334155;
+  display:grid; grid-auto-flow:column; gap:18px; justify-content:center;
+  margin:18px 0 0; padding:0; list-style:none; font-size:.98rem; color:#334155;
 }
 .hero-points li{ position:relative; padding-left:18px; }
-.hero-points li::before{
-  content:"";
-  width:8px; height:8px; border-radius:50%;
-  background:var(--accent2);
-  position:absolute; left:0; top:7px;
-}
-@media (max-width:640px){
-  .hero-points{ grid-auto-flow:row; justify-items:center; }
-}
+.hero-points li::before{ content:""; width:8px; height:8px; border-radius:50%; background:var(--accent2); position:absolute; left:0; top:7px; }
+@media (max-width:640px){ .hero-points{ grid-auto-flow:row; justify-items:center; } }
 
-/* proof card */
 .hero__card{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:20px;
-  box-shadow:0 14px 32px rgba(15,23,42,.08);
-  overflow:hidden;
-  max-width:460px;
-  margin:28px auto 0;
+  background:#fff; border:1px solid var(--line); border-radius:20px;
+  box-shadow:0 14px 32px rgba(15,23,42,.08); overflow:hidden; max-width:460px; margin:28px auto 0;
 }
 @media (min-width:980px){ .hero__card{ margin:0; } }
-.hero__card .card-topbar{
-  height:6px;
-  background:linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
-}
+.hero__card .card-topbar{ height:6px; background:linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%); }
 .hero__card .card-body{ padding:18px 18px 20px; }
 .card-title{ margin:4px 0 8px; font-weight:800; font-size:1.15rem; }
 .ticks{ list-style:none; padding:0; margin:0 0 16px; color:#334155; }
 .ticks li{ position:relative; padding-left:22px; margin:10px 0; }
-.ticks li::before{
-  content:"";
-  position:absolute; left:0; top:6px;
-  width:12px; height:12px; border-radius:3px;
-  background:var(--accent2);
-  box-shadow:inset 0 0 0 2px #fff;
-}
+.ticks li::before{ content:""; position:absolute; left:0; top:6px; width:12px; height:12px; border-radius:3px; background:var(--accent2); box-shadow:inset 0 0 0 2px #fff; }
 .trustnote{ color:#64748b; font-size:.9rem; text-align:center; margin:8px 0 0; }
-
-/* ===============================
-   Tags / chips (optional)
-=================================*/
-.tag{ display:inline-block; padding:6px 10px; border:1px solid var(--line); border-radius:999px; font-size:12px; color:#334155; margin-right:6px }
-.tag.alt{ color:var(--accent2); border-color:var(--accent2) }
 
 /* ===============================
    Sections: spacing, backgrounds, headings
 =================================*/
-/* --- Tighter vertical spacing across all sections --- */
-.section {
-  padding: 48px 20px;        /* was 72px – reduces vertical space */
-  scroll-margin-top: 80px;   /* keep anchor scroll working */
-}
-
-.section + .section {
-  border-top: 1px solid var(--line);
-  margin-top: 0;             /* prevents double gaps */
-}
-
+.section{ padding:48px 20px; scroll-margin-top:80px }
 .section + .section{ border-top:1px solid var(--line) }
 
 .section h2{ color:#0b1220; position:relative; letter-spacing:.2px }
 .section h2::after{ content:""; display:block; width:56px; height:4px; margin-top:8px; background:var(--accent); border-radius:2px }
 
-#services{ background:#fff }
-#process{ background:#fff }
-#sectors{ background:#fff }       /* unified background */
-#results{ background:#fff }       /* unified background */
-#about{ background:#fff }
+#services,#process,#sectors,#results,#about{ background:#fff }
 #faqs{ background:#f8fafc; border-top:1px solid var(--line) }
 #contact{ background:linear-gradient(180deg,#ecfeff 0%, #f0fdf4 100%); border-top:1px solid var(--line) }
 
-/* alternate underline colour */
 #results h2::after, #faqs h2::after, #contact h2::after{ background:var(--accent2) }
 
 /* ===============================
-   Grid + cards
+   Services grid + cards
 =================================*/
-.grid{ display:grid; gap:16px }
-.cards{ grid-template-columns:repeat(auto-fit,minmax(240px,1fr)) }
-
-.card{
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:16px;
-  background:#fff;
-  box-shadow:var(--shadow);
-  position:relative;
-
-  /* equal height + push CTA to bottom */
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  height:100%;
+.services-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:22px; margin-top:14px;
 }
-
-/* coloured top bar */
-.card::before{
-  content:"";
-  position:absolute;
-  left:0; top:-1px; height:4px; width:100%;
-  border-top-left-radius:inherit; border-top-right-radius:inherit;
-  background:var(--accent);
-}
-.cards .card:nth-child(2n)::before{ background:var(--accent2) }
-
-/* make list take room so button can sit at bottom */
-.card ul.list{ display:flex; flex-direction:column; flex-grow:1 }
-.card ul.list li:last-child{ margin-top:auto }
-
-/* ===============================
-   Lists + bullets + button rows
-=================================*/
-.list{
-  margin:8px 0 0 0;
-  padding-left:1.15rem;
-  list-style-position:outside;
-}
-.list li{
-  display:list-item;
-  list-style:disc;
-  margin-left:0;
-  padding-left:0;
-}
-.list li::marker{ color:var(--accent) }
-.cards .card:nth-child(2n) .list li::marker{ color:var(--accent2) }
-
-.list li:has(a.btn), .list li:has(button){ list-style:none }
-.list li a.btn{ display:inline-block; margin:12px auto 0; text-align:center }
-
-@supports not (selector(:has(*))) {
-  .list li.no-bullet{ list-style:none }
-}
-
-/* ===============================
-   Footer layout
-=================================*/
-footer{
-  background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%);
-  padding:20px 20px 32px;
-}
-
-.footercols{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:32px;
-  align-items:start;
-}
-
-footer strong{
-  display:block;
-  margin-bottom:6px;
-  color:#0b1220;
-}
-
-footer p,
-footer small{
-  color:#475569;
-  margin:0;
-  line-height:1.4;
-}
-
-footer small{
-  grid-column:1 / -1;
-  font-size:14px;
-  margin-top:12px;
-  text-align:center;
-}
-
-/* ===============================
-   Typography polish
-=================================*/
-h1, h2, h3, h4, h5, h6,
-.card strong,
-.section h2{ text-transform:capitalize; font-variant:normal; letter-spacing:.3px }
-
-/* ===============================
-   Services grid + cards (your enhanced styling)
-=================================*/
-/* --- Reposition 'Most popular' badge neatly --- */
-.svc-card .badge {
-  position: absolute;
-  top: 12px;
-  left: 16px;                  /* instead of right corner */
-  background: var(--accent2);
-  color: #fff;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: .2px;
-  padding: 5px 10px;
-  border-radius: 999px;
-  box-shadow: 0 6px 12px rgba(16,185,129,.25);
-}
-
-/* Remove chips and tidy card spacing */
-.svc-tags { display: none; }
-
-/* Add subtle breathing space below the list now that chips are gone */
-.svc-list { margin-bottom: 16px; }
-
-   .services-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-  gap:22px;
-  margin-top:14px;
-}
-
 .svc-card{
-  --rail: var(--accent);                  /* per-card rail colour */
-  position:relative;
-  display:flex; flex-direction:column;
-  gap:14px;
-  padding:18px 18px 16px;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:20px;
-  box-shadow:0 10px 24px rgba(15,23,42,.06);
-  transition:transform .2s ease, box-shadow .2s ease, border-color .2s;
-  overflow:hidden;
-  min-height:320px;
+  --rail: var(--accent);
+  position:relative; display:flex; flex-direction:column; gap:14px;
+  padding:18px 18px 16px; background:#fff; border:1px solid var(--line);
+  border-radius:20px; box-shadow:0 10px 24px rgba(15,23,42,.06);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  overflow:hidden; min-height:320px;
 }
-.svc-card:hover{
-  transform: translateY(-4px);
-  box-shadow:0 18px 40px rgba(15,23,42,.10);
-  border-color: rgba(37,99,235,.22);
-}
+.svc-card:hover{ transform: translateY(-4px); box-shadow:0 18px 40px rgba(15,23,42,.10); border-color: rgba(37,99,235,.22); }
+
+/* thin rail */
 .svc-rail{
-  position:absolute; inset:0 0 auto 0;
-  height:4px; background: var(--rail);
-  transform-origin:left;
-  transform: scaleX(.9);
-  transition: transform .25s ease;
+  position:absolute; left:0; right:0; top:-1px; height:4px; background:var(--rail);
+  border-top-left-radius:20px; border-top-right-radius:20px;
+  transform-origin:left; transform: scaleX(.92); transition: transform .25s ease;
 }
 .svc-card:hover .svc-rail{ transform: scaleX(1); }
 
+/* one authoritative badge rule (top-right pill) */
 .svc-card .badge{
   position:absolute; top:10px; right:10px;
-  background: var(--accent2);
-  color:#fff; font-weight:700;
-  font-size:12px; letter-spacing:.2px;
-  padding:6px 10px; border-radius:999px;
-  box-shadow:0 6px 16px rgba(16,185,129,.25);
+  display:inline-flex; align-items:center; justify-content:center;
+  background: var(--accent2); color:#fff; font-weight:700;
+  font-size:12px; letter-spacing:.2px; padding:6px 10px;
+  border-radius:999px; box-shadow:0 6px 16px rgba(16,185,129,.25);
 }
 
 .svc-header{ display:flex; align-items:flex-start; gap:12px; }
 .svc-header::before{
-  content: attr(data-icon);
-  flex:0 0 auto;
-  font-size:22px;
-  line-height:1;
-  display:grid; place-items:center;
-  width:38px; height:38px;
-  border-radius:12px;
-  background:#f1f5f9;
-  border:1px solid #e5e7eb;
+  content: attr(data-icon); flex:0 0 auto; font-size:22px; line-height:1;
+  display:grid; place-items:center; width:38px; height:38px; border-radius:12px;
+  background:#f1f5f9; border:1px solid #e5e7eb;
 }
-.svc-header h3{
-  font-size: clamp(18px, 2vw, 20px);
-  margin:0 0 2px; line-height:1.15;
-}
+.svc-header h3{ font-size: clamp(18px, 2vw, 20px); margin:0 0 2px; line-height:1.15; }
 .svc-kicker{ margin:0; color:#64748b; font-size:14.5px; }
 
 .svc-list{
-  margin:2px 0 0; padding-left:0;
-  list-style:none; color:#334155;
+  margin:2px 0 0; padding-left:0; list-style:none; color:#334155;
   display:flex; flex-direction:column; gap:10px;
 }
 .svc-list li{ position:relative; padding-left:26px; }
 .svc-list li::before{
-  content:"";
-  position:absolute; left:0; top:.4em;
-  width:16px; height:16px; border-radius:50%;
-  background: radial-gradient(circle at 60% 40%, #fff 40%, #fff0 41%),
-              var(--rail);
+  content:""; position:absolute; left:0; top:.4em; width:16px; height:16px; border-radius:50%;
+  background: radial-gradient(circle at 60% 40%, #fff 40%, #fff0 41%), var(--rail);
   box-shadow: 0 0 0 2px #e5f4ff inset;
-}
-
-.svc-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:-2px; }
-.chip{
-  font-size:12px; color:#0b1220;
-  border:1px solid #e5e7eb;
-  padding:6px 10px; border-radius:999px;
-  background:#fff;
 }
 
 .svc-cta{ margin-top:auto; }
 .svc-cta .btn{ width:auto; }
 
-@media (max-width:520px){
-  .svc-card{ box-shadow:0 8px 16px rgba(15,23,42,.06); }
+/* ===============================
+   Process / Roadmap
+=================================*/
+.process-steps{
+  list-style:none; padding:0; margin:14px 0 0;
+  display:grid; grid-template-columns:1fr; gap:14px; position:relative;
+}
+.process-steps::before{
+  content:""; position:absolute; left:22px; top:10px; bottom:10px; width:3px;
+  background: color-mix(in srgb, var(--accent) 60%, var(--accent2) 40%); border-radius:2px;
+}
+.step{ display:grid; grid-template-columns:44px 1fr; align-items:start; gap:12px; }
+.step__num{
+  width:44px; height:44px; display:grid; place-items:center; font-weight:800; color:#0b1220;
+  background:#fff; border:2px solid color-mix(in srgb, var(--accent) 70%, var(--accent2) 30%);
+  border-radius:50%; box-shadow:0 6px 16px rgba(15,23,42,.08); z-index:1;
+}
+.step__card{
+  background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
+  padding:14px 16px; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.step__card h3{ margin:0 0 6px; font-size:1.02rem; }
+.step__card p{ margin:0; color:#334155; line-height:1.5; }
+.step__card:hover{ transform: translateY(-2px); box-shadow:0 14px 32px rgba(15,23,42,.10); border-color: color-mix(in srgb, var(--accent) 22%, var(--line)); }
+
+@media (min-width:980px){
+  .process-steps{ grid-template-columns:repeat(5, 1fr); gap:18px; padding-top:26px; }
+  .process-steps::before{ content:""; position:absolute; left:0; right:0; top:46px; height:4px; bottom:auto;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%); border-radius:2px; }
+  .step{ grid-template-columns:1fr; text-align:left; }
+  .step__num{ margin:0 auto 8px; position:relative; top:-30px; }
+  .step__card{ padding:16px 18px; }
 }
 
 /* ===============================
-   FAQ accordion
+   FAQ accordion (stable)
 =================================*/
 .faq{ display:grid; gap:12px; margin-top:14px; }
-
 .faq-item{
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:#fff;
-  box-shadow:0 8px 20px rgba(15,23,42,.05);
-  overflow:hidden;
-  transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+  border:1px solid var(--line); border-radius:16px; background:#fff;
+  box-shadow:0 8px 20px rgba(15,23,42,.05); overflow:hidden;
+  transition: box-shadow .2s ease, border-color .2s ease;
 }
-.faq-item[open]{
-  box-shadow:0 14px 32px rgba(15,23,42,.08);
-  border-color:rgba(37,99,235,.22);
-}
+.faq-item:hover{ box-shadow:0 12px 28px rgba(15,23,42,.08); }
+.faq-item .faq-body{ border-top:1px dashed transparent; }
+.faq-item[open] .faq-body{ border-top-color:#e5e7eb; }
+
 .faq-item summary{
-  list-style:none;
-  cursor:pointer;
-  padding:16px 18px;
-  display:flex; align-items:center; gap:12px;
-  font-weight:700; color:#0b1220; position:relative;
+  list-style:none; cursor:pointer; padding:16px 18px;
+  display:grid; grid-template-columns:36px 1fr 16px; align-items:center; gap:12px;
+  font-weight:700; color:#0b1220;
 }
 .faq-item summary::-webkit-details-marker{ display:none; }
 .faq-item summary::before{
-  content:"❓";
-  flex:0 0 auto;
-  display:grid; place-items:center;
-  width:34px; height:34px; border-radius:10px;
+  content:"❓"; width:36px; height:36px; display:grid; place-items:center; border-radius:10px;
   background:#f1f5f9; border:1px solid #e5e7eb; font-size:18px;
 }
 .faq-item summary::after{
-  content:"";
-  margin-left:auto; width:10px; height:10px;
+  content:""; width:10px; height:10px; justify-self:end;
   border-right:2px solid #0b1220; border-bottom:2px solid #0b1220;
-  transform:rotate(-45deg); transition:transform .2s ease;
+  transform:rotate(-45deg); transition: transform .2s ease;
 }
 .faq-item[open] summary::after{ transform:rotate(45deg); }
-.faq-body{
-  padding:0 18px 16px 64px;
-  color:#334155; line-height:1.6;
-  border-top:1px dashed #e5e7eb;
-}
-.faq-item:hover{ transform:translateY(-2px); }
+.faq-body{ padding:12px 18px 16px 70px; color:#334155; line-height:1.6; }
 .faq-item summary:focus-visible{
   outline:3px solid color-mix(in srgb, var(--accent) 30%, transparent);
   outline-offset:2px; border-radius:14px;
 }
 
 /* ===============================
-   Sectors + Testimonials (unified bg)
+   Sectors + Testimonials
 =================================*/
-.sectors-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-  gap:18px; margin-top:10px;
-}
+.sectors-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:10px; }
 .sector-card{
-  position:relative;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:#fff;
-  box-shadow:0 10px 24px rgba(15,23,42,.06);
-  padding:18px 18px 16px 18px;
-  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  position:relative; border:1px solid var(--line); border-radius:18px; background:#fff;
+  box-shadow:0 10px 24px rgba(15,23,42,.06); padding:18px; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
-.sector-card::before{
-  content:"";
-  position:absolute; left:0; top:-1px; width:100%; height:4px;
-  border-top-left-radius:inherit; border-top-right-radius:inherit;
-  background:var(--accent);
-}
+.sector-card::before{ content:""; position:absolute; left:0; top:-1px; width:100%; height:4px; border-top-left-radius:inherit; border-top-right-radius:inherit; background:var(--accent); }
 .sector-card:nth-child(2n)::before{ background:var(--accent2); }
-.sector-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 16px 32px rgba(15,23,42,.10);
-  border-color:color-mix(in srgb, var(--accent) 25%, var(--line));
-}
+.sector-card:hover{ transform:translateY(-3px); box-shadow:0 16px 32px rgba(15,23,42,.10); border-color:color-mix(in srgb, var(--accent) 25%, var(--line)); }
 .sector-card .icon{
-  width:44px;height:44px; border-radius:12px;
-  display:grid; place-items:center;
-  background:#f1f5f9; border:1px solid #e5e7eb;
-  font-size:22px; margin-bottom:10px;
+  width:44px;height:44px; border-radius:12px; display:grid; place-items:center;
+  background:#f1f5f9; border:1px solid #e5e7eb; font-size:22px; margin-bottom:10px;
 }
 .sector-card h3{ margin:0 0 6px; font-size:1.04rem; line-height:1.25; color:#0b1220; }
-.sector-card .mini{
-  margin:8px 0 0 0; padding-left:1.1rem;
-  list-style-position:outside; color:#334155;
-}
+.sector-card .mini{ margin:8px 0 0 0; padding-left:1.1rem; list-style-position:outside; color:#334155; }
 .sector-card .mini li::marker{ color:var(--accent); }
 .sector-card:nth-child(2n) .mini li::marker{ color:var(--accent2); }
 
-.testimonials{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap:18px; margin-top:10px;
-}
+.testimonials{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:18px; margin-top:10px; }
 .quote-card{
-  position:relative;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:#fff;
-  box-shadow:0 10px 24px rgba(15,23,42,.06);
-  padding:18px 18px 16px 18px;
-  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  position:relative; border:1px solid var(--line); border-radius:18px; background:#fff;
+  box-shadow:0 10px 24px rgba(15,23,42,.06); padding:18px; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
-.quote-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 16px 32px rgba(15,23,42,.10);
-  border-color:color-mix(in srgb, var(--accent) 25%, var(--line));
-}
-.quote-card blockquote{
-  margin:0; color:#0b1220; line-height:1.55;
-  position:relative; padding-left:34px;
-}
+.quote-card:hover{ transform:translateY(-3px); box-shadow:0 16px 32px rgba(15,23,42,.10); border-color:color-mix(in srgb, var(--accent) 25%, var(--line)); }
+.quote-card blockquote{ margin:0; color:#0b1220; line-height:1.55; position:relative; padding-left:34px; }
 .quote-card blockquote::before{
-  content:"“";
-  position:absolute; left:0; top:-8px;
-  font-size:42px; line-height:1;
+  content:"“"; position:absolute; left:0; top:-8px; font-size:42px; line-height:1;
   color:color-mix(in srgb, var(--accent) 35%, #c7d2fe);
 }
 .quote-card figcaption{ margin-top:10px; color:#64748b; font-size:.92rem; }
 
-   /* ===== FAQ — stable, no wobble ===== */
-.faq{
-  display:grid;
-  gap:12px;
-  margin-top:14px;
+/* ===============================
+   Typography polish
+=================================*/
+h1, h2, h3, h4, h5, h6, .card strong, .section h2{
+  text-transform:capitalize; font-variant:normal; letter-spacing:.3px;
 }
-
-/* Keep size stable; avoid translateY jumps */
-.faq-item{
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:#fff;
-  box-shadow:0 8px 20px rgba(15,23,42,.05);
-  overflow:hidden;
-  transition: box-shadow .2s ease, border-color .2s ease;
-  will-change: box-shadow;
-}
-.faq-item:hover{ box-shadow:0 12px 28px rgba(15,23,42,.08); }
-
-/* Use the same border in both states to prevent 1px jumps */
-.faq-item .faq-body{
-  border-top:1px dashed transparent;  /* present even when closed */
-}
-.faq-item[open] .faq-body{
-  border-top-color:#e5e7eb;           /* only the color changes */
-}
-
-/* Summary is a fixed grid: [icon | text | arrow] */
-.faq-item summary{
-  list-style:none;                     /* no default marker */
-  cursor:pointer;
-  padding:16px 18px;
-  display:grid;
-  grid-template-columns:36px 1fr 16px;
-  align-items:center;
-  gap:12px;
-  font-weight:700;
-  color:#0b1220;
-}
-.faq-item summary::-webkit-details-marker{ display:none; }
-
-/* Left icon stays the same size (no reflow) */
-.faq-item summary::before{
-  content:"❓";
-  width:36px; height:36px;
-  display:grid; place-items:center;
-  border-radius:10px;
-  background:#f1f5f9;
-  border:1px solid #e5e7eb;
-  font-size:18px;
-}
-
-/* Right arrow occupies fixed 16×16 box, only rotates (no width change) */
-.faq-item summary::after{
-  content:"";
-  width:10px; height:10px;
-  justify-self:end;
-  border-right:2px solid #0b1220;
-  border-bottom:2px solid #0b1220;
-  transform:rotate(-45deg);
-  transition: transform .2s ease;
-}
-.faq-item[open] summary::after{ transform:rotate(45deg); }
-
-/* Body text never nudges the summary; keep padding consistent */
-.faq-body{
-  padding:12px 18px 16px 70px; /* left indents under the icon */
-  color:#334155;
-  line-height:1.6;
-}
-
-/* Accessibility focus without shifting layout */
-.faq-item summary:focus-visible{
-  outline:3px solid color-mix(in srgb, var(--accent) 30%, transparent);
-  outline-offset:2px;
-  border-radius:14px;
-}
-/* ==== Process / Roadmap ==== */
-.process-steps{
-  list-style: none;
-  padding: 0;
-  margin: 14px 0 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  position: relative;
-}
-
-/* Vertical track on mobile */
-.process-steps::before{
-  content:"";
-  position:absolute; left:22px; top:10px; bottom:10px;
-  width: 3px;
-  background: color-mix(in srgb, var(--accent) 60%, var(--accent2) 40%);
-  border-radius: 2px;
-}
-
-/* Step item */
-.step{
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  align-items: start;
-  gap: 12px;
-}
-
-/* Number marker */
-.step__num{
-  width: 44px; height: 44px;
-  display: grid; place-items: center;
-  font-weight: 800;
-  color: #0b1220;
-  background: #fff;
-  border: 2px solid color-mix(in srgb, var(--accent) 70%, var(--accent2) 30%);
-  border-radius: 50%;
-  box-shadow: 0 6px 16px rgba(15,23,42,.08);
-  z-index: 1;
-}
-
-/* Card */
-.step__card{
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  padding: 14px 16px;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.step__card h3{
-  margin: 0 0 6px;
-  font-size: 1.02rem;
-}
-.step__card p{
-  margin: 0;
-  color: #334155;
-  line-height: 1.5;
-}
-.step__card:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(15,23,42,.10);
-  border-color: color-mix(in srgb, var(--accent) 22%, var(--line));
-}
-
-/* Horizontal roadmap on desktop */
-@media (min-width: 980px){
-  .process-steps{
-    grid-template-columns: repeat(5, 1fr);
-    gap: 18px;
-    padding-top: 26px;
-  }
-  .process-steps::before{
-    content:"";
-    position: absolute;
-    left: 0; right: 0;
-    top: 46px; bottom: auto;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
-    border-radius: 2px;
-  }
-  .step{
-    grid-template-columns: 1fr;
-    text-align: left;
-  }
-  .step__num{
-    margin: 0 auto 8px;
-    position: relative;
-    top: -30px;               /* sits nicely on the line */
-  }
-  .step__card{
-    padding: 16px 18px;
-  }
-}
-
-</style>
-
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
 <div class="bar">
   <div class="container">
-    <header style="display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;">
-      
-      <!-- LOGO -->
+    <header>
       <a href="/" class="logo" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
         <img src="securetender-logo-tight.png" alt="SecureTender logo" style="height:40px;width:auto;display:block;margin-top:-2px;">
       </a>
-
-      <!-- NAVIGATION -->
       <nav style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
         <a href="#services">Services</a>
         <a href="#process">Process</a>
@@ -761,21 +320,16 @@ h1, h2, h3, h4, h5, h6,
         <a href="#faqs">FAQs</a>
         <a class="btn success" href="#contact">Free bid review</a>
       </nav>
-
     </header>
   </div>
 </div>
 
-
 <!-- HERO -->
 <section id="hero" class="hero hero--split">
   <div class="hero__inner">
-    <!-- LEFT: message -->
     <div class="hero__content">
       <div class="kicker">Bid support for UK SMEs</div>
-
       <h1>Win More UK Tenders — Without The Stress.</h1>
-
       <p class="subhead">
         Plain-English, score-aligned responses. We handle Go/No-Go, storyboards, drafting
         and portal submission — you keep running the business.
@@ -793,7 +347,6 @@ h1, h2, h3, h4, h5, h6,
       </ul>
     </div>
 
-    <!-- RIGHT: proof/benefits card -->
     <aside class="hero__card">
       <div class="card-topbar"></div>
       <div class="card-body">
@@ -817,79 +370,61 @@ h1, h2, h3, h4, h5, h6,
     Straightforward support for UK SMEs — whether you need a quick rescue, a fully managed bid, or help building long-term capability.
   </p>
 
- <div class="services-grid">
-  <!-- Quick Support -->
-  <article class="svc-card" style="--rail: var(--accent);">
-    <div class="svc-rail"></div>
+  <div class="services-grid">
+    <!-- Quick Support -->
+    <article class="svc-card" style="--rail: var(--accent);">
+      <div class="svc-rail"></div>
+      <header class="svc-header" data-icon="🚑">
+        <h3>Quick Support</h3>
+        <p class="svc-kicker">For urgent deadlines & triage</p>
+      </header>
+      <ul class="svc-list">
+        <li>48-hour bid review or rescue</li>
+        <li>Go/No-Go readiness check</li>
+        <li>Score-uplift and feedback advice</li>
+      </ul>
+      <footer class="svc-cta">
+        <a class="btn ghost" href="#contact">Need urgent help</a>
+      </footer>
+    </article>
 
-    <header class="svc-header" data-icon="🚑">
-      <h3>Quick Support</h3>
-      <p class="svc-kicker">For urgent deadlines & triage</p>
-    </header>
+    <!-- Full Bid Writing (Most popular) -->
+    <article class="svc-card" style="--rail: var(--accent2);">
+      <div class="svc-rail"></div>
+      <span class="badge">Most popular</span>
+      <header class="svc-header" data-icon="📝">
+        <h3>Full Bid Writing</h3>
+        <p class="svc-kicker">End-to-end drafting & submission</p>
+      </header>
+      <ul class="svc-list">
+        <li>Storyboards, win themes, compliance mapping</li>
+        <li>Drafting to scoring criteria</li>
+        <li>Social value, policies and scoring criteria covered</li>
+      </ul>
+      <footer class="svc-cta">
+        <a class="btn primary" href="#contact">Start my bid</a>
+      </footer>
+    </article>
 
-    <ul class="svc-list">
-      <li>48-hour bid review or rescue</li>
-      <li>Go/No-Go readiness check</li>
-      <li>Score-uplift and feedback advice</li>
-    </ul>
-
-    <footer class="svc-cta">
-      <a class="btn ghost" href="#contact">Need urgent help</a>
-    </footer>
-  </article>
-
-  <!-- Full Bid Writing (Most popular) -->
-  <article class="svc-card popular" style="--rail: var(--accent2);">
-    <div class="svc-rail"></div>
-    <span class="badge">Most popular</span>
-
-    <header class="svc-header" data-icon="✍️">
-      <h3>Full Bid Writing</h3>
-      <p class="svc-kicker">End-to-end drafting & submission</p>
-    </header>
-
-    <ul class="svc-list">
-      <li>Storyboards, win themes, compliance mapping</li>
-      <li>Drafting to scoring criteria</li>
-      <li>Social value, policies and scoring criteria covered</li>
-    </ul>
-
-    <div class="svc-card">
-  <span class="badge">Most popular</span> <!-- Move this line -->
-  <div class="svc-header" data-icon="📝">
-   
-    <h3>Full Bid Writing</h3>
-    <p class="svc-kicker">End-to-end drafting & submission</p>
+    <!-- Build Capability -->
+    <article class="svc-card" style="--rail: var(--accent);">
+      <div class="svc-rail"></div>
+      <header class="svc-header" data-icon="🧰">
+        <h3>Build Capability</h3>
+        <p class="svc-kicker">Train team & set up toolkits</p>
+      </header>
+      <ul class="svc-list">
+        <li>1-day SME bid bootcamp</li>
+        <li>Templates, trackers and policy packs</li>
+        <li>Answer bank and pipeline setup</li>
+      </ul>
+      <footer class="svc-cta">
+        <a class="btn ghost" href="#contact">Train my team</a>
+      </footer>
+    </article>
   </div>
-
-    <footer class="svc-cta">
-      <a class="btn primary" href="#contact">Start my bid</a>
-    </footer>
-  </article>
-
-  <!-- Build Capability -->
-  <article class="svc-card" style="--rail: #3b82f6;">
-    <div class="svc-rail"></div>
-
-    <header class="svc-header" data-icon="🧰">
-      <h3>Build Capability</h3>
-      <p class="svc-kicker">Train team & set up toolkits</p>
-    </header>
-
-    <ul class="svc-list">
-      <li>1-day SME bid bootcamp</li>
-      <li>Templates, trackers and policy packs</li>
-      <li>Answer bank and pipeline setup</li>
-    </ul>
-
-    <footer class="svc-cta">
-      <a class="btn ghost" href="#contact">Train my team</a>
-    </footer>
-  </article>
-</div>
-
 </section>
- 
+
 <!-- HOW IT WORKS -->
 <section id="process" class="section container">
   <h2>How It Works</h2>
@@ -898,46 +433,26 @@ h1, h2, h3, h4, h5, h6,
   <ol class="process-steps">
     <li class="step">
       <div class="step__num">1</div>
-      <div class="step__card">
-        <h3>Discovery</h3>
-        <p>We talk through the opportunity, timeline and goals.</p>
-      </div>
+      <div class="step__card"><h3>Discovery</h3><p>We talk through the opportunity, timeline and goals.</p></div>
     </li>
-
     <li class="step">
       <div class="step__num">2</div>
-      <div class="step__card">
-        <h3>Fit Check</h3>
-        <p>We assess eligibility, score potential and resource capacity.</p>
-      </div>
+      <div class="step__card"><h3>Fit Check</h3><p>We assess eligibility, score potential and resource capacity.</p></div>
     </li>
-
     <li class="step">
       <div class="step__num">3</div>
-      <div class="step__card">
-        <h3>Storyboarding</h3>
-        <p>We map out win themes and key answers before writing.</p>
-      </div>
+      <div class="step__card"><h3>Storyboarding</h3><p>We map out win themes and key answers before writing.</p></div>
     </li>
-
     <li class="step">
       <div class="step__num">4</div>
-      <div class="step__card">
-        <h3>Draft & Review</h3>
-        <p>You review versions as we refine for clarity and compliance.</p>
-      </div>
+      <div class="step__card"><h3>Draft & Review</h3><p>You review versions as we refine for clarity and compliance.</p></div>
     </li>
-
     <li class="step">
       <div class="step__num">5</div>
-      <div class="step__card">
-        <h3>Submit & Debrief</h3>
-        <p>We handle the upload and share lessons for next time.</p>
-      </div>
+      <div class="step__card"><h3>Submit & Debrief</h3><p>We handle the upload and share lessons for next time.</p></div>
     </li>
   </ol>
 </section>
-
 
 <!-- SECTORS -->
 <section id="sectors" class="section container">
@@ -982,6 +497,8 @@ h1, h2, h3, h4, h5, h6,
     </article>
   </div>
 </section>
+
+<!-- TESTIMONIALS -->
 <section id="results" class="section container">
   <h2>What Clients Say</h2>
   <div class="testimonials">
@@ -989,12 +506,10 @@ h1, h2, h3, h4, h5, h6,
       <blockquote>Clear, scored answers mapped to criteria.</blockquote>
       <figcaption>COO, Manufacturing SME</figcaption>
     </figure>
-
     <figure class="quote-card">
       <blockquote>Mobilised under pressure and hit a tough deadline.</blockquote>
       <figcaption>Programme Lead, Public Sector Supplier</figcaption>
     </figure>
-
     <figure class="quote-card">
       <blockquote>Social Value we can actually deliver.</blockquote>
       <figcaption>Director, Construction SME</figcaption>
@@ -1002,12 +517,11 @@ h1, h2, h3, h4, h5, h6,
   </div>
 </section>
 
-
 <!-- ABOUT -->
 <section id="about" class="section container">
   <h2>About</h2>
   <p class="muted">
-    SecureTender exists to make tendering achievable for UK SMEs — cutting through jargon, simplifying process, and helping great businesses win the work they deserve. 
+    SecureTender exists to make tendering achievable for UK SMEs — cutting through jargon, simplifying process, and helping great businesses win the work they deserve.
     The approach is calm, practical, and rooted in real delivery — combining structured methods with plain-English communication that works in both regulated and fast-moving environments.
   </p>
   <ul class="list">
@@ -1018,14 +532,10 @@ h1, h2, h3, h4, h5, h6,
   </ul>
 </section>
 
-
-
-
 <!-- FAQs -->
 <section id="faqs" class="section">
   <div class="container">
     <h2>FAQs</h2>
-
     <div class="faq">
       <details class="faq-item" open>
         <summary>Do you write and submit, or just write?</summary>
@@ -1036,23 +546,17 @@ h1, h2, h3, h4, h5, h6,
 
       <details class="faq-item">
         <summary>Can you help with Social Value?</summary>
-        <div class="faq-body">
-          Yes — scored models with a practical delivery plan.
-        </div>
+        <div class="faq-body">Yes — scored models with a practical delivery plan.</div>
       </details>
 
       <details class="faq-item">
         <summary>What if we’ve left it late?</summary>
-        <div class="faq-body">
-          24–48h triage; if too risky we’ll advise a fallback.
-        </div>
+        <div class="faq-body">24–48h triage; if too risky we’ll advise a fallback.</div>
       </details>
 
       <details class="faq-item">
         <summary>Do you work success-only?</summary>
-        <div class="faq-body">
-          Not solely. We can add a small success-fee element on a reduced fixed fee.
-        </div>
+        <div class="faq-body">Not solely. We can add a small success-fee element on a reduced fixed fee.</div>
       </details>
     </div>
   </div>
@@ -1062,10 +566,9 @@ h1, h2, h3, h4, h5, h6,
 <section id="contact" class="section container">
   <h2>Get in touch</h2>
   <p class="muted">Whether you’d like a bid review, proposal support, or just an honest conversation about how we can help — send a few details and we’ll get straight back to you.</p>
-  
-  <!-- Simple mailto fallback -->
+
   <form onsubmit="event.preventDefault();window.location='mailto:hello@securetender.co.uk?subject=SecureTender%20Enquiry&body=Name:%0ACompany:%0AService%20Interested%20In:%0AOpportunity%20URL:%0ADeadline:%0ANotes:';">
-    <div class="grid">
+    <div class="grid" style="display:grid;gap:16px;grid-template-columns:1fr 1fr;">
       <div><input class="input" placeholder="Name*" required></div>
       <div><input class="input" placeholder="Company*" required></div>
       <div><input class="input" type="email" placeholder="Email*" required></div>
@@ -1074,45 +577,39 @@ h1, h2, h3, h4, h5, h6,
       <div><input class="input" placeholder="How can we help?"></div>
     </div>
 
-    <p class="note"><em>Tip:</em> Swap this mailto with a Google Form embed for file uploads or project briefs.</p>
+    <p class="note" style="font-size:13px;color:#64748b;margin-top:6px">
+      <em>Tip:</em> Swap this mailto with a Google Form embed for file uploads or project briefs.
+    </p>
 
-    <p class="row">
+    <p class="row" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
       <button class="btn primary" type="submit">Send enquiry</button>
       <a class="btn ghost" href="#">Book a call</a>
     </p>
   </form>
 
-  <p class="note">Email: hello@securetender.co.uk · Phone: +44 (0)xxx xxxx xxx</p>
+  <p class="note" style="font-size:13px;color:#64748b;margin-top:6px">Email: hello@securetender.co.uk · Phone: +44 (0)xxx xxxx xxx</p>
 </section>
-
 
 <!-- FOOTER -->
 <div style="border-top:1px solid var(--line);background:#f8fafc">
   <footer class="container" style="padding:20px 20px 32px">
-    <div class="footercols">
-      <div><strong>SecureTender</strong><p class="note">Helping UK SME's win work with clear, credible tender responses.</p></div>
+    <div class="footercols" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;align-items:start;">
+      <div><strong>SecureTender</strong><p class="note">Helping UK SMEs win work with clear, credible tender responses.</p></div>
       <div><strong>Services</strong><p><a href="#services">All services</a></p></div>
       <div><strong>Resources</strong><p><a href="#">Bid Readiness Checklist</a></p></div>
-   <div>
-  <strong>Legal</strong>
-  <p>
-    <a href="legal/privacy.html"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Privacy (opens in a new window)">Privacy</a> ·
-    <a href="legal/cookies.html"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Cookies (opens in a new window)">Cookies</a> ·
-    <a href="legal/terms.html"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Terms (opens in a new window)">Terms</a>
-  </p>
-</div>
-    <small>© SecureTender · All rights reserved</small>
+      <div>
+        <strong>Legal</strong>
+        <p>
+          <a href="legal/privacy.html" target="_blank" rel="noopener noreferrer" aria-label="Privacy (opens in a new window)">Privacy</a> ·
+          <a href="legal/cookies.html" target="_blank" rel="noopener noreferrer" aria-label="Cookies (opens in a new window)">Cookies</a> ·
+          <a href="legal/terms.html" target="_blank" rel="noopener noreferrer" aria-label="Terms (opens in a new window)">Terms</a>
+        </p>
+      </div>
+      <small style="grid-column:1/-1;color:#64748b;margin-top:12px;text-align:center">© SecureTender · All rights reserved</small>
+    </div>
   </footer>
 </div>
 
 </body>
 </html>
+
