@@ -7,109 +7,118 @@
   <meta name="description" content="Plain‑English tender and bid writing for UK SMEs. Go/No‑Go triage, end‑to‑end drafting, Social Value, portals (Atamis, Jaggaer, Proactis, Bravo, Delta). Free bid review." />
   <link rel="icon" href="data:,">
   <style>
-  /* --- Bullet visibility fix --- */
+/* ===============================
+   Design tokens / variables
+=================================*/
+:root{
+  --ink:#0b1220;          /* text (navy) */
+  --muted:#475569;        /* secondary text */
+  --line:#e5e7eb;         /* borders */
+  --bg:#ffffff;           /* page background */
 
-/* Default list styling */
-.list li {
-  list-style: disc;
-  margin-left: 1.2rem;
-  padding-left: 0;
-  list-style-position: outside;
+  --accent:#2563eb;       /* BLUE (primary) */
+  --accent-ink:#ffffff;   /* text on blue */
+  --accent2:#10b981;      /* GREEN (success) */
+
+  --radius:18px;
+  --shadow:0 10px 24px rgba(15,23,42,.06);
+  --max:1100px;
 }
 
-/* Only hide bullets for the button row */
-.list li:has(a.btn),
-.list li:has(button) {
-  list-style-type: none;
+/* ===============================
+   Base + layout
+=================================*/
+*{ box-sizing:border-box }
+body{ margin:0; font:16px system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif; color:var(--ink); background:var(--bg) }
+a{ color:var(--ink); text-decoration:none }
+a:hover{ color:var(--accent); opacity:.95 }
+
+.container{ max-width:var(--max); margin:0 auto; padding:20px }
+.bar{ position:sticky; top:0; backdrop-filter:blur(6px); background:rgba(255,255,255,.85); border-bottom:1px solid var(--line); z-index:50 }
+header{ display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap }
+nav a{ margin:0 10px }
+
+/* Logo wordmark (if you ever show text) */
+header .logo, .logo{
+  font-family:'Poppins','Segoe UI',sans-serif;
+  font-weight:700;
+  font-size:1.4rem;
+  letter-spacing:.5px;
+  color:var(--accent);
+  text-transform:lowercase;
 }
 
-/* Fallback for browsers that don’t support :has() */
-@supports not (selector(:has(*))) {
-  .list li a.btn,
-  .list li button {
-    list-style-type: none;
-  }
-}
+/* ===============================
+   Hero
+=================================*/
+.hero{ padding:56px 20px; background:linear-gradient(180deg,#e0f2fe 0%, #f0fff4 100%); border-bottom:1px solid var(--line) }
+h1{ color:#0b1220; font-size:clamp(28px,6vw,48px); line-height:1.07; margin:0 0 10px; font-weight:800; letter-spacing:.3px }
+h2{ font-size:clamp(22px,4.5vw,32px); line-height:1.15; margin:0 0 8px; font-weight:800 }
+p.muted{ color:var(--muted) }
+.row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px }
 
-/* Center the button neatly */
-.list li a.btn {
-  display: inline-block;
-  margin: 12px auto 0 auto;
-  text-align: center;
-}
+/* ===============================
+   Buttons
+=================================*/
+.btn{ display:inline-block; padding:11px 16px; border-radius:999px; border:1px solid var(--ink); text-decoration:none; transition:.2s }
+.btn.primary{ background:var(--accent); color:var(--accent-ink); border-color:var(--accent) }
+.btn.primary:hover{ filter:brightness(.92) }
+.btn.success{ background:var(--accent2); color:#fff; border-color:var(--accent2) }
+.btn.success:hover{ filter:brightness(.92) }
+.btn.ghost{ border-color:#cbd5e1; color:var(--ink) }
+.btn.ghost:hover{ background:#f1f5f9 }
 
+/* ===============================
+   Tags / chips (optional)
+=================================*/
+.tag{ display:inline-block; padding:6px 10px; border:1px solid var(--line); border-radius:999px; font-size:12px; color:#334155; margin-right:6px }
+.tag.alt{ color:var(--accent2); border-color:var(--accent2) }
 
-li a.btn,
-li a {
-  text-decoration: none;
-}
+/* ===============================
+   Sections: spacing, backgrounds, headings
+=================================*/
+/* spacing + sticky header offset */
+.section{ padding:72px 20px; scroll-margin-top:88px }
+.section + .section{ border-top:1px solid var(--line) }
 
+/* heading underline */
+.section h2{ color:#0b1220; position:relative; letter-spacing:.2px }
+.section h2::after{ content:""; display:block; width:56px; height:4px; margin-top:8px; background:var(--accent); border-radius:2px }
 
-    /* Logo wordmark styling */
-header .logo, .logo {
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
-  font-weight: 700;
-  font-size: 1.4rem;
-  letter-spacing: 0.5px;
-  color: var(--accent); /* blue tone */
-  text-transform: lowercase;
-}
-header .logo span {
-  color: var(--accent2); /* green for second half */
-}
+/* backgrounds per section */
+#services{ background:#fff }
+#process{ background:#fff }
+#sectors{ background:#f8fafc; border-top:1px solid var(--line) }
+#results{ background:#f0fdf4; border-top:1px solid var(--line); border-bottom:1px solid var(--line) }
+#about{ background:#fff }
+#faqs{ background:#f8fafc; border-top:1px solid var(--line) }
+#contact{ background:linear-gradient(180deg,#ecfeff 0%, #f0fdf4 100%); border-top:1px solid var(--line) }
 
-    /* ==== PAGE-WIDE COLOUR ENHANCEMENTS ==== */
+/* swap some underline colours for variety */
+#results h2::after, #faqs h2::after, #contact h2::after{ background:var(--accent2) }
 
-/* Make in-page anchors stop below sticky header */
- /* adjust if your header changes */
+/* ===============================
+   Grid + cards
+=================================*/
+.grid{ display:grid; gap:16px }
+.cards{ grid-template-columns:repeat(auto-fit,minmax(240px,1fr)) }
 
-/* Section backgrounds so the whole page matches the hero vibe */
-#services{background:#ffffff}
-
-#process{background:#ffffff}
-#sectors{background:#f8fafc; border-top:1px solid var(--line)}
-#results{background:#f0fdf4; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
-#about{background:#ffffff}
-#faqs{background:#f8fafc; border-top:1px solid var(--line)}
-#contact{
-  background:linear-gradient(180deg,#ecfeff 0%, #f0fdf4 100%);
-  border-top:1px solid var(--line);
-}
-
-/* Headings: stronger colour + accent underline */
-.section h2{
-  color:#0b1220;               /* deep navy */
-  position:relative;
-  letter-spacing:.2px;
-}
-.section h2::after{
-  content:""; display:block; width:56px; height:4px; margin-top:8px;
-  background:var(--accent); border-radius:2px;
-}
-/* swap some underlines to green for variety */
-#packages h2::after, #results h2::after, #faqs h2::after, #contact h2::after{ background:var(--accent2) }
-
-/* Optional: a touch more colour in the H1 */
-h1{ color:#0b1220; }
-@media (min-width:700px){
-  h1{ letter-spacing:.3px }
-}
-
-/* Links and hover states in brand colours */
-a{ color:#0b1220; text-decoration:none }
-a:hover{ color:var(--accent); opacity:1 }
-
-/* Bullet markers in blue (modern browsers) */
-li::marker{ color:var(--accent) }
-
-/* Cards: coloured top bars and a little more pop */
 .card{
   border:1px solid var(--line);
   border-radius:var(--radius);
+  padding:16px;
   background:#fff;
-  box-shadow:0 10px 24px rgba(37,99,235,.06); /* blue-ish shadow */
+  box-shadow:var(--shadow);
   position:relative;
+
+  /* equal height + push CTA to bottom */
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  height:100%;
 }
+
+/* coloured top bar */
 .card::before{
   content:"";
   position:absolute;
@@ -117,252 +126,55 @@ li::marker{ color:var(--accent) }
   border-top-left-radius:inherit; border-top-right-radius:inherit;
   background:var(--accent);
 }
-
 /* alternate some cards to green */
 .cards .card:nth-child(2n)::before{ background:var(--accent2) }
 
-/* Buttons already exist; make ghost outline a bit bolder & rounded chips look nicer */
-.btn.ghost{ border-color:#cbd5e1; color:#0b1220; border-width:1.5px }
-.btn.success{ background:var(--accent2); color:#fff; border-color:var(--accent2) }
+/* make list take room so button can sit at bottom */
+.card ul.list{ display:flex; flex-direction:column; flex-grow:1 }
+.card ul.list li:last-child{ margin-top:auto }
 
-/* Footer band with subtle gradient */
-footer{ background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%); }
-
-    /* Make in-page anchors stop below the sticky header */
-.section{ scroll-margin-top: 88px; }  /* tweak 96px if needed */
-   :root{
-  --ink:#0b1220;          /* text (navy) */
-  --muted:#475569;        /* secondary text */
-  --line:#e5e7eb;         /* borders */
-  --bg:#ffffff;           /* page background */
-
-  /* New accent palette */
-  --accent:#2563eb;       /* BLUE (primary) */
-  --accent-ink:#ffffff;   /* text on blue */
-  --accent2:#10b981;      /* GREEN (success) */
-  --accent2-ink:#06281e;  /* dark teal text if needed */
-
-  --radius:18px;
-  --shadow:0 6px 20px rgba(15,23,42,.06);
-  --max:1100px;
-}
-    /* Buttons */
-.btn{display:inline-block;padding:11px 16px;border-radius:999px;border:1px solid var(--ink);text-decoration:none;transition:.2s}
-.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.btn.primary:hover{filter:brightness(0.92)}
-.btn.success{background:var(--accent2);color:#fff;border-color:var(--accent2)}
-.btn.success:hover{filter:brightness(0.92)}
-.btn.ghost{border-color:#cbd5e1;color:var(--ink)}
-.btn.ghost:hover{background:#f1f5f9}
-
-/* Hero with soft gradient */
-.hero{padding:56px 20px; background:linear-gradient(180deg,#e0f2fe 0%, #f0fff4 100%); border-bottom:1px solid var(--line)}
-
-/* Chips use accents */
-.tag{display:inline-block;margin-right:6px;font-size:12px;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:6px 10px;background:#fff}
-.tag.alt{color:var(--accent2);border-color:var(--accent2)}
-
-/* Cards get coloured top borders for a bit of life */
-.card{border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:#fff;box-shadow:var(--shadow);position:relative}
-.card::before{content:\"\";position:absolute;left:0;top:-1px;height:4px;width:100%;border-top-left-radius:inherit;border-top-right-radius:inherit;background:var(--accent)}
-/* alternate every other card to green */
-.cards .card:nth-child(2n)::before{background:var(--accent2)}
-
-/* Section alternates (optional, if you add class=\"section alt\" in HTML) */
-.section.alt{background:#f8fafc;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:36px 0}
-.section .container{max-width:var(--max);margin:0 auto;padding:0 20px}
-
-    *{box-sizing:border-box}
-    body{margin:0;font:16px system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-    a{color:var(--ink)}
-    .container{max-width:var(--max);margin:0 auto;padding:20px}
-    .bar{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(255,255,255,.85);border-bottom:1px solid var(--line);z-index:50}
-    header{display:flex;align-items:center;justify-content:space-between}
-    nav a{margin:0 10px;text-decoration:none}
-    .btn{display:inline-block;padding:11px 16px;border-radius:999px;border:1px solid var(--ink);text-decoration:none}
-    .btn.primary{background:var(--accent);color:#fff}
-    .btn.ghost{border-color:#cbd5e1;color:var(--ink)}
-    .hero{padding:56px 20px}
-    h1{font-size:clamp(28px,6vw,48px);line-height:1.07;margin:0 0 10px;font-weight:800}
-    h2{font-size:clamp(22px,4.5vw,32px);line-height:1.15;margin:0 0 8px;font-weight:800}
-    p.muted{color:var(--muted)}
-    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    .tag{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:#334155;margin-right:6px}
-    /* Section spacing + anchor offset for sticky header */
-.section{
-  padding:72px 20px;
-  scroll-margin-top:88px;
-}
-
-/* subtle divider between sections */
-.section + .section{
-  border-top:1px solid var(--line);
-}
-
-    .grid{display:grid;gap:16px}
-    .cards{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .card{border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:#fff;box-shadow:var(--shadow)}
-    .list{
-  margin:8px 0 0 0;         /* remove the 18px left margin */
-  padding-left:1.15rem;     /* keep bullets nicely aligned */
-  color:#334155;
-  list-style-position:outside;
-}
-    /* Remove bullet when a list item contains a button/link */
-.list li:has(a.btn){ list-style: none; }
-
-/* Fallback if :has() isn't supported in some browsers */
-@supports not (selector(:has(*))) {
-  .list li { list-style: disc; }
-  .list li > a.btn { /* treat the button row specially */
-    position: relative;
-  }
-  .list li > a.btn::before { content: ""; } /* neutralise marker in some engines */
-}
-
-/* Centre the button row */
-.list li a.btn{
-  display:inline-block;
-  margin:12px auto 0;  /* centres horizontally */
-  text-align:center;
-}
-    
-
-    .price{float:right;color:#64748b}
-    .footercols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-    .input{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px}
-    form .grid{grid-template-columns:1fr 1fr}
-    @media(max-width:720px){form .grid{grid-template-columns:1fr}}
-    footer small{color:#64748b}
-    .note{font-size:13px;color:#64748b;margin-top:6px}
-    /* --- Section theming so the whole page matches the hero --- */
-#services{background:#fff}
-
-#process{background:#fff}
-#sectors{background:#f8fafc; border-top:1px solid var(--line)}
-#results{background:#f0fdf4; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
-#about{background:#fff}
-#faqs{background:#f8fafc; border-top:1px solid var(--line)}
-#contact{
-  background:linear-gradient(180deg,#ecfeff 0%, #f0fdf4 100%);
-  border-top:1px solid var(--line);
-}
-
-/* Headings get a coloured underline */
-.section h2{position:relative}
-.section h2::after{
-  content:""; display:block; width:56px; height:4px; margin-top:8px;
-  background:var(--accent); border-radius:2px;
-}
-/* Alternate underline colour per section for a bit of life */
-
-/* Links & hovers match palette */
-a:hover{opacity:.88}
-/* --- Fix indentation and center buttons in service boxes --- */
-
-/* Remove unwanted left indentation on list items */
-.service-card ul {
-  margin: 0;
-  padding-left: 1.2rem; /* keeps bullets neatly aligned under heading */
-  list-style-position: inside; /* makes bullets line up flush */
-}
-
-/* Make text align perfectly under title */
-.service-card li {
-  padding-left: 0;
-  margin-left: 0;
-}
-
-/* Center buttons inside service cards */
-.service-card a.btn,
-.service-card button {
-  display: inline-block;
-  margin: 12px auto 0 auto; /* centers horizontally */
-  text-align: center;
-}
-
-/* Optional polish — add a soft hover effect */
-.service-card a.btn:hover {
-  background-color: #ffdf60; /* lighter yellow */
-  transform: scale(1.03);
-  transition: 0.2s ease;
-}
-/* --- Make all cards equal height and align buttons to bottom --- */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  align-items: stretch; /* ensures all cards are the same height */
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* pushes button to bottom */
-  height: 100%;
-}
-
-/* Ensure the list takes up available space and button sticks to bottom */
-.card ul.list {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.card ul.list li:last-child {
-  margin-top: auto; /* pushes the button down */
-}
-/* ==== Bullet + button alignment — final override ==== */
-
-/* normal lists: show bullets */
+/* ===============================
+   Lists + bullets + button rows
+=================================*/
+/* default bullets */
 .list{
   margin:8px 0 0 0;
   padding-left:1.15rem;
-  list-style-position: outside;
+  list-style-position:outside;
 }
 .list li{
   display:list-item;
-  list-style:disc !important;   /* force bullets back on */
+  list-style:disc;
   margin-left:0;
   padding-left:0;
 }
+/* bullet colour (blue by default) */
+.list li::marker{ color:var(--accent) }
+/* green bullets inside every 2nd (green-topped) card */
+.cards .card:nth-child(2n) .list li::marker{ color:var(--accent2) }
 
-/* bullet colour: blue by default */
-.list li::marker{ color: var(--accent); }
+/* hide bullet for button row + centre the button */
+.list li:has(a.btn), .list li:has(button){ list-style:none }
+.list li a.btn{ display:inline-block; margin:12px auto 0; text-align:center }
 
-/* in every 2nd card (your green-topped ones), make bullets green */
-.cards .card:nth-child(2n) .list li::marker{ color: var(--accent2); }
-
-/* button row: no bullet + centred */
-.list li:has(a.btn), .list li:has(button){
-  list-style:none !important;
-}
-.list li a.btn{
-  display:inline-block;
-  margin:12px auto 0;
-  text-align:center;
-}
-
-/* fallback if :has() isn’t supported */
+/* Fallback for browsers that don’t support :has() */
 @supports not (selector(:has(*))) {
-  .list li.no-bullet{ list-style:none !important; }
+  .list li.no-bullet{ list-style:none }
 }
-/* --- Force consistent Title Case style for headings and card titles --- */
 
-/* Capitalize the first letter of each word for main headings and strong text in cards */
+/* ===============================
+   Footer
+=================================*/
+footer{ background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%) }
+
+/* ===============================
+   Typography polish
+=================================*/
 h1, h2, h3, h4, h5, h6,
 .card strong,
-.section h2 {
-  text-transform: capitalize;
-}
+.section h2{ text-transform:capitalize; font-variant:normal; letter-spacing:.3px }
+</style>
 
-/* Prevent small-caps or all-uppercase overrides elsewhere */
-h1, h2, h3, h4, h5, h6, .card strong {
-  font-variant: normal;
-  letter-spacing: 0.3px;
-}
-
-  </style>
 </head>
 <body>
 
