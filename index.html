@@ -7,6 +7,22 @@
   <meta name="description" content="Plain‑English tender and bid writing for UK SMEs. Go/No‑Go triage, end‑to‑end drafting, Social Value, portals (Atamis, Jaggaer, Proactis, Bravo, Delta). Free bid review." />
   <link rel="icon" href="data:,">
   <style>
+    /* --- Remove bullet points before buttons or links --- */
+li:has(a),
+li:has(button) {
+  list-style: none;
+}
+
+li a.btn,
+li a {
+  text-decoration: none;
+}
+
+li a.btn::marker,
+li::marker {
+  content: none !important;
+}
+
     /* Logo wordmark styling */
 header .logo, .logo {
   font-family: 'Poppins', 'Segoe UI', sans-serif;
