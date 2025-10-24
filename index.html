@@ -431,6 +431,117 @@ header .logo, .logo{
 h1, h2, h3, h4, h5, h6, .card strong, .section h2{
   text-transform:capitalize; font-variant:normal; letter-spacing:.3px;
 }
+    /* ===== About — balanced layout ===== */
+
+/* intro line length */
+.about-intro{
+  max-width: 900px;
+  margin: 0 0 14px;
+}
+
+/* full-width rail timeline */
+.about-rail{
+  position: relative;
+  margin: 8px 0 18px;
+  padding-top: 20px;
+}
+.about-steps{
+  --rail: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
+  list-style: none;
+  margin: 0;
+  padding: 0 10px 0 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  position: relative;
+}
+.about-steps::before{
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 34px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--rail);
+  opacity: .9;
+}
+.about-steps li{
+  text-align: center;
+}
+.about-steps .dot{
+  width: 28px; height: 28px; margin: 0 auto 6px;
+  background: #fff;
+  border: 3px solid color-mix(in srgb, var(--accent) 70%, #ffffff);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 8px 22px rgba(37,99,235,.18);
+  position: relative;
+  z-index: 1;
+}
+.about-steps strong{
+  display:block; font-size:.98rem; color:#0b1220;
+}
+.about-steps em{
+  display:block; font-style:normal; color:#64748b; font-size:.88rem;
+}
+
+/* metrics (3-up, consistent height) */
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap: 14px;
+  margin: 6px 0 16px;
+}
+.metric{
+  background:#fff; border:1px solid var(--line); border-radius:14px;
+  padding:14px; text-align:center; box-shadow:var(--shadow);
+  min-height: 92px; display:grid; place-content:center;
+}
+.metric strong{
+  display:block; font-size:clamp(22px, 4vw, 32px); line-height:1; margin-bottom:4px;
+}
+.metric span{ color:#64748b; font-size:.95rem; }
+
+/* pillars (2-up) */
+.pillars{
+  display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px;
+}
+.pillar{
+  position:relative; background:#fff; border:1px solid var(--line); border-radius:16px;
+  padding:14px 14px 12px 54px; box-shadow:var(--shadow);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  min-height: 112px;
+}
+.pillar:hover{ transform:translateY(-2px); box-shadow:0 14px 32px rgba(15,23,42,.10); border-color:color-mix(in srgb, var(--accent) 22%, var(--line)); }
+.pillar::before{
+  content:attr(data-emoji);
+  position:absolute; left:12px; top:12px;
+  width:32px; height:32px; border-radius:10px; display:grid; place-items:center;
+  background:#f1f5f9; border:1px solid #e5e7eb; font-size:18px;
+}
+.pillar h3{ margin:0 0 4px; font-size:1rem; }
+.pillar p{ margin:0; color:#334155; font-size:.96rem; }
+
+/* closing bullet points (two columns on wide screens) */
+.about-points{
+  margin: 14px 0 0;
+  padding-left: 1.1rem;
+  color:#334155;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 18px;
+}
+.about-points li::marker{ color: var(--accent); }
+
+@media (max-width: 920px){
+  .about-steps{ grid-template-columns: repeat(3, 1fr); row-gap: 18px; }
+  .about-points{ grid-template-columns: 1fr; }
+}
+@media (max-width: 600px){
+  .metrics{ grid-template-columns: 1fr 1fr; }
+  .pillars{ grid-template-columns: 1fr; }
+}
+
   </style>
 </head>
 <body>
