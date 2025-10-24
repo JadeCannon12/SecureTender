@@ -563,23 +563,30 @@ h1, h2, h3, h4, h5, h6, .card strong, .section h2{ text-transform:capitalize; fo
   <h2>Get in touch</h2>
   <p class="muted">Whether you’d like a bid review, proposal support, or just an honest conversation about how we can help — send a few details and we’ll get straight back to you.</p>
 
-  <form onsubmit="event.preventDefault();window.location='mailto:hello@securetender.co.uk?subject=SecureTender%20Enquiry&body=Name:%0ACompany:%0AService%20Interested%20In:%0AOpportunity%20URL:%0ADeadline:%0ANotes:';">
-    <div class="grid" style="display:grid;gap:16px;grid-template-columns:1fr 1fr;">
-      <div><input class="input" placeholder="Name*" required></div>
-      <div><input class="input" placeholder="Company*" required></div>
-      <div><input class="input" type="email" placeholder="Email*" required></div>
-      <div><input class="input" type="url" placeholder="Opportunity URL (if relevant)"></div>
-      <div><input class="input" type="date" placeholder="Deadline"></div>
-      <div><input class="input" placeholder="How can we help?"></div>
-    </div>
-    <p class="note" style="font-size:13px;color:#64748b;margin-top:6px"><em>Tip:</em> Swap this mailto with a Google Form embed for file uploads or project briefs.</p>
-    <p class="row" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-      <button class="btn primary" type="submit">Send enquiry</button>
-      <a class="btn ghost" href="#">Book a call</a>
-    </p>
-  </form>
+ <form action="https://formspree.io/f/mqagzakb" method="POST">
+  <div class="grid" style="display:grid;gap:16px;grid-template-columns:1fr 1fr;">
+    <div><input class="input" name="name" placeholder="Name*" required></div>
+    <div><input class="input" name="company" placeholder="Company*" required></div>
+    <div><input class="input" name="_replyto" type="email" placeholder="Email*" required></div>
+    <div><input class="input" name="url" type="url" placeholder="Opportunity URL (if relevant)"></div>
+    <div><input class="input" name="deadline" type="date" placeholder="Deadline"></div>
+    <div><textarea class="input" name="message" placeholder="How can we help?" rows="3" required></textarea></div>
+  </div>
 
-  <p class="note" style="font-size:13px;color:#64748b;margin-top:6px">Email: hello@securetender.co.uk · Phone: +44 (0)xxx xxxx xxx</p>
+  <p class="note" style="font-size:13px;color:#64748b;margin-top:6px">
+    <em>Tip:</em> We’ll reply within 1 business day.
+  </p>
+
+  <p class="row" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+    <button class="btn primary" type="submit">Send enquiry</button>
+    <a class="btn ghost" href="#">Book a call</a>
+    <input type="hidden" name="_redirect" value="https://securetender.co.uk/thank-you">
+
+  </p>
+</form>
+
+
+  <p class="note" style="font-size:13px;color:#64748b;margin-top:6px">Email: info@securetender.co.uk · Phone: +44 (0)xxx xxxx xxx</p>
 </section>
 
 <!-- FOOTER -->
