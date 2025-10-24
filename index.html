@@ -7,6 +7,76 @@
   <meta name="description" content="Plain‑English tender and bid writing for UK SMEs. Go/No‑Go triage, end‑to‑end drafting, Social Value, portals (Atamis, Jaggaer, Proactis, Bravo, Delta). Free bid review." />
   <link rel="icon" href="data:,">
   <style>
+    /* ==== PAGE-WIDE COLOUR ENHANCEMENTS ==== */
+
+/* Make in-page anchors stop below sticky header */
+.section{ scroll-margin-top: 88px; } /* adjust if your header changes */
+
+/* Section backgrounds so the whole page matches the hero vibe */
+#services{background:#ffffff}
+#packages{
+  background:linear-gradient(180deg,#f0f9ff 0%, #ecfeff 100%);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+#process{background:#ffffff}
+#sectors{background:#f8fafc; border-top:1px solid var(--line)}
+#results{background:#f0fdf4; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+#about{background:#ffffff}
+#faqs{background:#f8fafc; border-top:1px solid var(--line)}
+#contact{
+  background:linear-gradient(180deg,#ecfeff 0%, #f0fdf4 100%);
+  border-top:1px solid var(--line);
+}
+
+/* Headings: stronger colour + accent underline */
+.section h2{
+  color:#0b1220;               /* deep navy */
+  position:relative;
+  letter-spacing:.2px;
+}
+.section h2::after{
+  content:""; display:block; width:56px; height:4px; margin-top:8px;
+  background:var(--accent); border-radius:2px;
+}
+/* swap some underlines to green for variety */
+#packages h2::after, #results h2::after, #faqs h2::after, #contact h2::after{ background:var(--accent2) }
+
+/* Optional: a touch more colour in the H1 */
+h1{ color:#0b1220; }
+@media (min-width:700px){
+  h1{ letter-spacing:.3px }
+}
+
+/* Links and hover states in brand colours */
+a{ color:#0b1220; text-decoration:none }
+a:hover{ color:var(--accent); opacity:1 }
+
+/* Bullet markers in blue (modern browsers) */
+li::marker{ color:var(--accent) }
+
+/* Cards: coloured top bars and a little more pop */
+.card{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:#fff;
+  box-shadow:0 10px 24px rgba(37,99,235,.06); /* blue-ish shadow */
+  position:relative;
+}
+.card::before{
+  content:""; position:absolute; left:0; top:-1px; height:4px; width:100%;
+  border-top-left-radius:inherit; border-top-right-radius:inherit;
+  background:var(--accent);
+}
+/* alternate some cards to green */
+.cards .card:nth-child(2n)::before{ background:var(--accent2) }
+
+/* Buttons already exist; make ghost outline a bit bolder & rounded chips look nicer */
+.btn.ghost{ border-color:#cbd5e1; color:#0b1220; border-width:1.5px }
+.btn.success{ background:var(--accent2); color:#fff; border-color:var(--accent2) }
+
+/* Footer band with subtle gradient */
+footer{ background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%); }
+
     /* Make in-page anchors stop below the sticky header */
 .section{ scroll-margin-top: 88px; }  /* tweak 96px if needed */
    :root{
