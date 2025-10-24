@@ -77,6 +77,34 @@
     @media(max-width:720px){form .grid{grid-template-columns:1fr}}
     footer small{color:#64748b}
     .note{font-size:13px;color:#64748b;margin-top:6px}
+    /* --- Section theming so the whole page matches the hero --- */
+#services{background:#fff}
+#packages{
+  background:linear-gradient(180deg,#f0f9ff 0%, #ecfeff 100%);
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+#process{background:#fff}
+#sectors{background:#f8fafc; border-top:1px solid var(--line)}
+#results{background:#f0fdf4; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+#about{background:#fff}
+#faqs{background:#f8fafc; border-top:1px solid var(--line)}
+#contact{
+  background:linear-gradient(180deg,#ecfeff 0%, #f0fdf4 100%);
+  border-top:1px solid var(--line);
+}
+
+/* Headings get a coloured underline */
+.section h2{position:relative}
+.section h2::after{
+  content:""; display:block; width:56px; height:4px; margin-top:8px;
+  background:var(--accent); border-radius:2px;
+}
+/* Alternate underline colour per section for a bit of life */
+#packages h2::after, #results h2::after, #faqs h2::after, #contact h2::after{ background:var(--accent2) }
+
+/* Links & hovers match palette */
+a:hover{opacity:.88}
+
   </style>
 </head>
 <body>
@@ -120,12 +148,12 @@
 <section id="services" class="section container">
   <h2>Services</h2>
   <div class="grid cards">
-    <div class="card"><strong>Bid Readiness & Go/No‑Go</strong><ul class="list"><li>Opportunity triage & compliance map</li><li>Evidence plan & bid calendar</li><li><a href="#contact">Ask about readiness →</a></li></ul></div>
-    <div class="card"><strong>End‑to‑End Bid Writing</strong><ul class="list"><li>Storyboards & win themes</li><li>Drafting to scoring criteria</li><li><a href="#contact">Start a full ITT →</a></li></ul></div>
-    <div class="card"><strong>Social Value & Policies</strong><ul class="list"><li>Scored model & delivery plan</li><li>Policy pack refresh</li><li><a href="#contact">Improve SV score →</a></li></ul></div>
-    <div class="card"><strong>Bid Manager as‑a‑Service</strong><ul class="list"><li>Pipeline scan & governance</li><li>Templates & trackers</li><li><a href="#contact">Monthly support →</a></li></ul></div>
-    <div class="card"><strong>Review & Rescue</strong><ul class="list"><li>48‑hour health check</li><li>Score‑uplift actions</li><li><a href="#contact">Need help fast →</a></li></ul></div>
-    <div class="card"><strong>Training & Tooling</strong><ul class="list"><li>1‑day SME bootcamp</li><li>Answer bank setup</li><li><a href="#contact">Train my team →</a></li></ul></div>
+    <div class="card"><strong>Bid Readiness & Go/No‑Go</strong><ul class="list"><li>Opportunity triage & compliance map</li><li>Evidence plan & bid calendar</li><li><a class="btn ghost" href="#contact">Ask about readiness</a></li></ul></div>
+    <div class="card"><strong>End‑to‑End Bid Writing</strong><ul class="list"><li>Storyboards & win themes</li><li>Drafting to scoring criteria</li><li><a class="btn ghost" href="#contact">Start a full ITT</a></li></ul></div>
+    <div class="card"><strong>Social Value & Policies</strong><ul class="list"><li>Scored model & delivery plan</li><li>Policy pack refresh</li><li><a class="btn ghost" href="#contact">Improve SV score</a></li></ul></div>
+    <div class="card"><strong>Bid Manager as‑a‑Service</strong><ul class="list"><li>Pipeline scan & governance</li><li>Templates & trackers</li><li><a class="btn ghost" href="#contact">Monthly support</a></li></ul></div>
+    <div class="card"><strong>Review & Rescue</strong><ul class="list"><li>48‑hour health check</li><li>Score‑uplift actions</li><li><a class="btn ghost" href="#contact">Need help fast</a></li></ul></div>
+    <div class="card"><strong>Training & Tooling</strong><ul class="list"><li>1‑day SME bootcamp</li><li>Answer bank setup</li><li><a class="btn ghost" href="#contact">Train my team</a></li></ul></div>
   </div>
 </section>
 
@@ -135,15 +163,15 @@
   <div class="grid cards">
     <div class="card">
       <strong>Starter SQ / PQQ</strong> <span class="price">£1,250–£2,250</span>
-      <ul class="list"><li>Compliance matrix</li><li>Drafting & polish</li><li><a href="#contact">Enquire →</a></li></ul>
+      <ul class="list"><li>Compliance matrix</li><li>Drafting & polish</li><li><a class="btn primary" href="#contact">Enquire</a></li></ul>
     </div>
     <div class="card">
       <strong>Full ITT (SME)</strong> <span class="price">£3,500–£7,500</span>
-      <ul class="list"><li>Storyboards & evidence</li><li>Drafting to criteria</li><li><a href="#contact">Enquire →</a></li></ul>
+      <ul class="list"><li>Storyboards & evidence</li><li>Drafting to criteria</li><li><a class="btn primary" href="#contact">Enquire</a></li></ul>
     </div>
     <div class="card">
       <strong>Bid Manager on Tap</strong> <span class="price">£1,200 / month</span>
-      <ul class="list"><li>Pipeline + 1 live bid/quarter</li><li>Templates & trackers</li><li><a href="#contact">Book →</a></li></ul>
+      <ul class="list"><li>Pipeline + 1 live bid/quarter</li><li>Templates & trackers</li><li><a class="btn success" href="#contact">Book</a></li></ul>
     </div>
   </div>
   <p class="note">Day rate (capped): £450–£600. Optional success‑fee add‑on (public sector) by agreement. Prices exclude VAT.</p>
