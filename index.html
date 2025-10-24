@@ -285,6 +285,31 @@ a:hover{opacity:.88}
   transform: scale(1.03);
   transition: 0.2s ease;
 }
+/* --- Make all cards equal height and align buttons to bottom --- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  align-items: stretch; /* ensures all cards are the same height */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* pushes button to bottom */
+  height: 100%;
+}
+
+/* Ensure the list takes up available space and button sticks to bottom */
+.card ul.list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card ul.list li:last-child {
+  margin-top: auto; /* pushes the button down */
+}
 
   </style>
 </head>
