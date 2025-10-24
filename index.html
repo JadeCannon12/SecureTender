@@ -205,6 +205,35 @@ footer{ background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%); }
 
 /* Links & hovers match palette */
 a:hover{opacity:.88}
+/* --- Fix indentation and center buttons in service boxes --- */
+
+/* Remove unwanted left indentation on list items */
+.service-card ul {
+  margin: 0;
+  padding-left: 1.2rem; /* keeps bullets neatly aligned under heading */
+  list-style-position: inside; /* makes bullets line up flush */
+}
+
+/* Make text align perfectly under title */
+.service-card li {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* Center buttons inside service cards */
+.service-card a.btn,
+.service-card button {
+  display: inline-block;
+  margin: 12px auto 0 auto; /* centers horizontally */
+  text-align: center;
+}
+
+/* Optional polish — add a soft hover effect */
+.service-card a.btn:hover {
+  background-color: #ffdf60; /* lighter yellow */
+  transform: scale(1.03);
+  transition: 0.2s ease;
+}
 
   </style>
 </head>
