@@ -328,7 +328,28 @@ h1, h2, h3, h4, h5, h6,
 /* ===============================
    Services grid + cards (your enhanced styling)
 =================================*/
-.services-grid{
+/* --- Reposition 'Most popular' badge neatly --- */
+.svc-card .badge {
+  position: absolute;
+  top: 12px;
+  left: 16px;                  /* instead of right corner */
+  background: var(--accent2);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .2px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  box-shadow: 0 6px 12px rgba(16,185,129,.25);
+}
+
+/* Remove chips and tidy card spacing */
+.svc-tags { display: none; }
+
+/* Add subtle breathing space below the list now that chips are gone */
+.svc-list { margin-bottom: 16px; }
+
+   .services-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
   gap:22px;
@@ -718,11 +739,6 @@ h1, h2, h3, h4, h5, h6,
       <li>Score-uplift and feedback advice</li>
     </ul>
 
-    <div class="svc-tags">
-      <span class="chip">Fast turn</span>
-      <span class="chip">Fixed fee</span>
-    </div>
-
     <footer class="svc-cta">
       <a class="btn ghost" href="#contact">Need urgent help</a>
     </footer>
@@ -744,10 +760,13 @@ h1, h2, h3, h4, h5, h6,
       <li>Social value, policies and scoring criteria covered</li>
     </ul>
 
-    <div class="svc-tags">
-      <span class="chip">Scored answers</span>
-      <span class="chip">Portal ready</span>
-    </div>
+    <div class="svc-card">
+  <span class="badge">Most popular</span> <!-- Move this line -->
+  <div class="svc-header" data-icon="📝">
+   
+    <h3>Full Bid Writing</h3>
+    <p class="svc-kicker">End-to-end drafting & submission</p>
+  </div>
 
     <footer class="svc-cta">
       <a class="btn primary" href="#contact">Start my bid</a>
@@ -768,11 +787,6 @@ h1, h2, h3, h4, h5, h6,
       <li>Templates, trackers and policy packs</li>
       <li>Answer bank and pipeline setup</li>
     </ul>
-
-    <div class="svc-tags">
-      <span class="chip">Upskill</span>
-      <span class="chip">Repeatable</span>
-    </div>
 
     <footer class="svc-cta">
       <a class="btn ghost" href="#contact">Train my team</a>
