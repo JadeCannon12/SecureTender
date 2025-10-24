@@ -197,7 +197,17 @@ header .logo, .logo{
 /* ===============================
    Sections: spacing, backgrounds, headings
 =================================*/
-.section{ padding:72px 20px; scroll-margin-top:88px }
+/* --- Tighter vertical spacing across all sections --- */
+.section {
+  padding: 48px 20px;        /* was 72px – reduces vertical space */
+  scroll-margin-top: 80px;   /* keep anchor scroll working */
+}
+
+.section + .section {
+  border-top: 1px solid var(--line);
+  margin-top: 0;             /* prevents double gaps */
+}
+
 .section + .section{ border-top:1px solid var(--line) }
 
 .section h2{ color:#0b1220; position:relative; letter-spacing:.2px }
