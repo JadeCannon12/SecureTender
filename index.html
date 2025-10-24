@@ -49,14 +49,47 @@ header .logo, .logo{
 }
 
 /* ===============================
-   Hero
-=================================*/
-.hero{ padding:56px 20px; background:linear-gradient(180deg,#e0f2fe 0%, #f0fff4 100%); border-bottom:1px solid var(--line) }
-h1{ color:#0b1220; font-size:clamp(28px,6vw,48px); line-height:1.07; margin:0 0 10px; font-weight:800; letter-spacing:.3px }
-h2{ font-size:clamp(22px,4.5vw,32px); line-height:1.15; margin:0 0 8px; font-weight:800 }
-p.muted{ color:var(--muted) }
-.row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px }
+/* --- HERO UPGRADE --- */
+.hero{
+  padding:100px 20px;
+  background:linear-gradient(180deg,#dbeafe 0%, #ecfdf5 100%);
+  text-align:left;
+  border-bottom:1px solid var(--line);
+}
 
+.hero h1{
+  font-size:clamp(36px,6vw,60px);
+  font-weight:800;
+  color:#0b1220;
+  margin-bottom:16px;
+  line-height:1.1;
+  max-width:700px;
+}
+
+.hero p{
+  font-size:1.15rem;
+  color:#475569;
+  max-width:640px;
+  margin-bottom:32px;
+  line-height:1.5;
+}
+
+.hero .row{
+  gap:18px;
+}
+
+.hero .btn.primary{
+  font-size:1rem;
+  padding:14px 26px;
+  border-radius:999px;
+}
+
+.hero .btn.ghost{
+  font-size:1rem;
+  padding:14px 26px;
+  border-radius:999px;
+  border:1.5px solid #cbd5e1;
+}
 /* ===============================
    Buttons
 =================================*/
@@ -237,14 +270,16 @@ h1, h2, h3, h4, h5, h6,
 
 <!-- HERO -->
 <section id="hero" class="hero container">
-  <h1>Win more UK tenders with calm, expert support.</h1>
-  <p class="muted">Plain‑English bid writing for SMEs. We handle Go/No‑Go, drafting and portal submission so you can keep running the business.</p>
+  <h1>Win More UK Tenders — Without the Stress.</h1>
+  <p class="muted">
+    Straightforward bid support for SMEs. From Go/No-Go decisions to drafting and submission — we take care of the process so you can focus on running the business.
+  </p>
   <div class="row">
-    <a class="btn primary" href="#contact">Book a discovery call</a>
-    <a class="btn ghost" href="#services">See how we help</a>
+    <a class="btn primary" href="#contact">Book a Discovery Call</a>
+    <a class="btn ghost" href="#services">See How We Help</a>
   </div>
-  
 </section>
+
 
 <!-- SERVICES -->
 <section id="services" class="section container">
