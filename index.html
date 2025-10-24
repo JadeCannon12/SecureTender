@@ -642,6 +642,100 @@ h1, h2, h3, h4, h5, h6,
   outline-offset:2px;
   border-radius:14px;
 }
+/* ==== Process / Roadmap ==== */
+.process-steps{
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  position: relative;
+}
+
+/* Vertical track on mobile */
+.process-steps::before{
+  content:"";
+  position:absolute; left:22px; top:10px; bottom:10px;
+  width: 3px;
+  background: color-mix(in srgb, var(--accent) 60%, var(--accent2) 40%);
+  border-radius: 2px;
+}
+
+/* Step item */
+.step{
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: start;
+  gap: 12px;
+}
+
+/* Number marker */
+.step__num{
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  font-weight: 800;
+  color: #0b1220;
+  background: #fff;
+  border: 2px solid color-mix(in srgb, var(--accent) 70%, var(--accent2) 30%);
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(15,23,42,.08);
+  z-index: 1;
+}
+
+/* Card */
+.step__card{
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 14px 16px;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.step__card h3{
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+}
+.step__card p{
+  margin: 0;
+  color: #334155;
+  line-height: 1.5;
+}
+.step__card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(15,23,42,.10);
+  border-color: color-mix(in srgb, var(--accent) 22%, var(--line));
+}
+
+/* Horizontal roadmap on desktop */
+@media (min-width: 980px){
+  .process-steps{
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    padding-top: 26px;
+  }
+  .process-steps::before{
+    content:"";
+    position: absolute;
+    left: 0; right: 0;
+    top: 46px; bottom: auto;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
+    border-radius: 2px;
+  }
+  .step{
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .step__num{
+    margin: 0 auto 8px;
+    position: relative;
+    top: -30px;               /* sits nicely on the line */
+  }
+  .step__card{
+    padding: 16px 18px;
+  }
+}
 
 </style>
 
@@ -795,21 +889,55 @@ h1, h2, h3, h4, h5, h6,
 </div>
 
 </section>
-  <!-- HOW IT WORKS -->
+ 
+<!-- HOW IT WORKS -->
 <section id="process" class="section container">
   <h2>How It Works</h2>
-  <p class="muted">
-    Every bid follows a clear, calm process — from first idea to final submission.
-  </p>
+  <p class="muted">Every bid follows a clear, calm process — from first idea to final submission.</p>
 
-  <ol class="list">
-    <li><strong>1. Discovery:</strong> We talk through the opportunity, timeline and goals.</li>
-    <li><strong>2. Fit Check:</strong> We assess eligibility, score potential and resource capacity.</li>
-    <li><strong>3. Storyboarding:</strong> We map out win themes and key answers before writing.</li>
-    <li><strong>4. Draft & Review:</strong> You review versions as we refine for clarity and compliance.</li>
-    <li><strong>5. Submit & Debrief:</strong> We handle the upload and share lessons for next time.</li>
+  <ol class="process-steps">
+    <li class="step">
+      <div class="step__num">1</div>
+      <div class="step__card">
+        <h3>Discovery</h3>
+        <p>We talk through the opportunity, timeline and goals.</p>
+      </div>
+    </li>
+
+    <li class="step">
+      <div class="step__num">2</div>
+      <div class="step__card">
+        <h3>Fit Check</h3>
+        <p>We assess eligibility, score potential and resource capacity.</p>
+      </div>
+    </li>
+
+    <li class="step">
+      <div class="step__num">3</div>
+      <div class="step__card">
+        <h3>Storyboarding</h3>
+        <p>We map out win themes and key answers before writing.</p>
+      </div>
+    </li>
+
+    <li class="step">
+      <div class="step__num">4</div>
+      <div class="step__card">
+        <h3>Draft & Review</h3>
+        <p>You review versions as we refine for clarity and compliance.</p>
+      </div>
+    </li>
+
+    <li class="step">
+      <div class="step__num">5</div>
+      <div class="step__card">
+        <h3>Submit & Debrief</h3>
+        <p>We handle the upload and share lessons for next time.</p>
+      </div>
+    </li>
   </ol>
 </section>
+
 
 <!-- SECTORS -->
 <section id="sectors" class="section container">
