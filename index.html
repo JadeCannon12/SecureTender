@@ -7,11 +7,37 @@
   <meta name="description" content="Plain‑English tender and bid writing for UK SMEs. Go/No‑Go triage, end‑to‑end drafting, Social Value, portals (Atamis, Jaggaer, Proactis, Bravo, Delta). Free bid review." />
   <link rel="icon" href="data:,">
   <style>
-    /* --- Remove bullet points before buttons or links --- */
-li:has(a),
-li:has(button) {
-  list-style: none;
+  /* --- Bullet visibility fix --- */
+
+/* Default list styling */
+.list li {
+  list-style: disc;
+  margin-left: 1.2rem;
+  padding-left: 0;
+  list-style-position: outside;
 }
+
+/* Only hide bullets for the button row */
+.list li:has(a.btn),
+.list li:has(button) {
+  list-style-type: none;
+}
+
+/* Fallback for browsers that don’t support :has() */
+@supports not (selector(:has(*))) {
+  .list li a.btn,
+  .list li button {
+    list-style-type: none;
+  }
+}
+
+/* Center the button neatly */
+.list li a.btn {
+  display: inline-block;
+  margin: 12px auto 0 auto;
+  text-align: center;
+}
+
 
 li a.btn,
 li a {
