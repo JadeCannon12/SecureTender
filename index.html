@@ -44,10 +44,6 @@ li a {
   text-decoration: none;
 }
 
-li a.btn::marker,
-li::marker {
-  content: none !important;
-}
 
     /* Logo wordmark styling */
 header .logo, .logo {
@@ -309,6 +305,41 @@ a:hover{opacity:.88}
 
 .card ul.list li:last-child {
   margin-top: auto; /* pushes the button down */
+}
+/* ==== Bullet + button alignment — final override ==== */
+
+/* normal lists: show bullets */
+.list{
+  margin:8px 0 0 0;
+  padding-left:1.15rem;
+  list-style-position: outside;
+}
+.list li{
+  display:list-item;
+  list-style:disc !important;   /* force bullets back on */
+  margin-left:0;
+  padding-left:0;
+}
+
+/* bullet colour: blue by default */
+.list li::marker{ color: var(--accent); }
+
+/* in every 2nd card (your green-topped ones), make bullets green */
+.cards .card:nth-child(2n) .list li::marker{ color: var(--accent2); }
+
+/* button row: no bullet + centred */
+.list li:has(a.btn), .list li:has(button){
+  list-style:none !important;
+}
+.list li a.btn{
+  display:inline-block;
+  margin:12px auto 0;
+  text-align:center;
+}
+
+/* fallback if :has() isn’t supported */
+@supports not (selector(:has(*))) {
+  .list li.no-bullet{ list-style:none !important; }
 }
 
   </style>
