@@ -61,14 +61,11 @@ header .logo span {
     /* ==== PAGE-WIDE COLOUR ENHANCEMENTS ==== */
 
 /* Make in-page anchors stop below sticky header */
-.section{ scroll-margin-top: 88px; } /* adjust if your header changes */
+ /* adjust if your header changes */
 
 /* Section backgrounds so the whole page matches the hero vibe */
 #services{background:#ffffff}
-#packages{
-  background:linear-gradient(180deg,#f0f9ff 0%, #ecfeff 100%);
-  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-}
+
 #process{background:#ffffff}
 #sectors{background:#f8fafc; border-top:1px solid var(--line)}
 #results{background:#f0fdf4; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
@@ -114,10 +111,13 @@ li::marker{ color:var(--accent) }
   position:relative;
 }
 .card::before{
-  content:""; position:absolute; left:0; top:-1px; height:4px; width:100%;
+  content:"";
+  position:absolute;
+  left:0; top:-1px; height:4px; width:100%;
   border-top-left-radius:inherit; border-top-right-radius:inherit;
   background:var(--accent);
 }
+
 /* alternate some cards to green */
 .cards .card:nth-child(2n)::before{ background:var(--accent2) }
 
@@ -188,7 +188,17 @@ footer{ background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%); }
     p.muted{color:var(--muted)}
     .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     .tag{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:#334155;margin-right:6px}
-    .section{padding:36px 20px}
+    /* Section spacing + anchor offset for sticky header */
+.section{
+  padding:72px 20px;
+  scroll-margin-top:88px;
+}
+
+/* subtle divider between sections */
+.section + .section{
+  border-top:1px solid var(--line);
+}
+
     .grid{display:grid;gap:16px}
     .cards{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
     .card{border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:#fff;box-shadow:var(--shadow)}
@@ -227,10 +237,7 @@ footer{ background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%); }
     .note{font-size:13px;color:#64748b;margin-top:6px}
     /* --- Section theming so the whole page matches the hero --- */
 #services{background:#fff}
-#packages{
-  background:linear-gradient(180deg,#f0f9ff 0%, #ecfeff 100%);
-  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-}
+
 #process{background:#fff}
 #sectors{background:#f8fafc; border-top:1px solid var(--line)}
 #results{background:#f0fdf4; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
@@ -248,7 +255,6 @@ footer{ background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%); }
   background:var(--accent); border-radius:2px;
 }
 /* Alternate underline colour per section for a bit of life */
-#packages h2::after, #results h2::after, #faqs h2::after, #contact h2::after{ background:var(--accent2) }
 
 /* Links & hovers match palette */
 a:hover{opacity:.88}
@@ -373,7 +379,6 @@ h1, h2, h3, h4, h5, h6, .card strong {
       <!-- NAVIGATION -->
       <nav style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
         <a href="#services">Services</a>
-        <a href="#packages">Packages</a>
         <a href="#process">Process</a>
         <a href="#sectors">Sectors</a>
         <a href="#about">About</a>
@@ -392,7 +397,7 @@ h1, h2, h3, h4, h5, h6, .card strong {
   <p class="muted">Plain‑English bid writing for SMEs. We handle Go/No‑Go, drafting and portal submission so you can keep running the business.</p>
   <div class="row">
     <a class="btn primary" href="#contact">Book a discovery call</a>
-    <a class="btn ghost" href="#packages">See packages & pricing</a>
+    <a class="btn ghost" href="#services">See how we help</a>
   </div>
   
 </section>
