@@ -163,9 +163,41 @@ p.muted{ color:var(--muted) }
 }
 
 /* ===============================
-   Footer
+   Footer layout
 =================================*/
-footer{ background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%) }
+footer{
+  background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%);
+  padding:20px 20px 32px;
+}
+
+.footercols{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:32px;
+  align-items:start;
+}
+
+footer strong{
+  display:block;
+  margin-bottom:6px;
+  color:#0b1220;
+}
+
+footer p,
+footer small{
+  color:#475569;
+  margin:0;
+  line-height:1.4;
+}
+
+/* make small copyright line span full width */
+footer small{
+  grid-column:1 / -1;
+  font-size:14px;
+  margin-top:12px;
+  text-align:center;
+}
+
 
 /* ===============================
    Typography polish
