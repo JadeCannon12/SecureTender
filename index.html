@@ -400,6 +400,80 @@ h1, h2, h3, h4, h5, h6,
 @media (max-width: 520px){
   .svc-card{ box-shadow:0 8px 16px rgba(15,23,42,.06); }
 }
+/* ===== FAQ accordion ===== */
+.faq {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(15,23,42,.05);
+  overflow: hidden;
+  transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.faq-item[open] {
+  box-shadow: 0 14px 32px rgba(15,23,42,.08);
+  border-color: rgba(37,99,235,.22); /* subtle blue when open */
+}
+
+.faq-item summary {
+  list-style: none;            /* remove default marker */
+  cursor: pointer;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  color: #0b1220;
+  position: relative;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; } /* Safari */
+
+.faq-item summary::before {
+  content: "❓";
+  flex: 0 0 auto;
+  display: grid; place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  border: 1px solid #e5e7eb;
+  font-size: 18px;
+}
+
+.faq-item summary::after {
+  content: "";
+  margin-left: auto;
+  width: 10px; height: 10px;
+  border-right: 2px solid #0b1220;
+  border-bottom: 2px solid #0b1220;
+  transform: rotate(-45deg);
+  transition: transform .2s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg); /* arrow flips open */
+}
+
+.faq-body {
+  padding: 0 18px 16px 64px;  /* indent lines up with the icon */
+  color: #334155;
+  line-height: 1.6;
+  border-top: 1px dashed #e5e7eb;
+}
+
+/* hover + focus affordances */
+.faq-item:hover { transform: translateY(-2px); }
+.faq-item summary:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  outline-offset: 2px;
+  border-radius: 14px;
+}
 
     
 </style>
@@ -601,15 +675,36 @@ h1, h2, h3, h4, h5, h6,
 
 
 <!-- FAQs -->
-<section id="faqs" class="section container">
-  <h2>FAQs</h2>
-  <ul class="list">
-    <li><strong>Do you write and submit, or just write?</strong> Both; we can handle full portal submission.</li>
-    <li><strong>Can you help with Social Value?</strong> Yes — scored models with a practical delivery plan.</li>
-    <li><strong>What if we’ve left it late?</strong> 24–48h triage; if too risky we’ll advise a fallback.</li>
-    <li><strong>Do you work success‑only?</strong> Not solely. We can add a small success‑fee element on a reduced fixed fee.</li>
-  </ul>
-</section>
+<div class="faq">
+  <details class="faq-item" open>
+    <summary>Do you write and submit, or just write?</summary>
+    <div class="faq-body">
+      Both. We can handle full portal submission end-to-end or deliver final responses for your team to upload.
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Can you help with Social Value?</summary>
+    <div class="faq-body">
+      Yes — we build scored Social Value models with a practical delivery plan, costed activities, and measurable KPIs.
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>What if we’ve left it late?</summary>
+    <div class="faq-body">
+      We offer a 24–48h triage. If the risk is too high to submit a quality response, we’ll advise a fallback that protects future bids.
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Do you work success-only?</summary>
+    <div class="faq-body">
+      Not solely. We can add a small success-fee element to a reduced fixed fee where appropriate.
+    </div>
+  </details>
+</div>
+
 
 <!-- CONTACT -->
 <!-- CONTACT -->
