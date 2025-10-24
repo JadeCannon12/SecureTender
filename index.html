@@ -170,7 +170,40 @@ footer{ background:linear-gradient(180deg,#ffffff 0%, #f8fafc 100%); }
     .grid{display:grid;gap:16px}
     .cards{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
     .card{border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:#fff;box-shadow:var(--shadow)}
-    .list{margin:8px 0 0 18px;color:#334155}
+    .list{
+  margin:8px 0 0 0;         /* remove the 18px left margin */
+  padding-left:1.15rem;     /* keep bullets nicely aligned */
+  color:#334155;
+  list-style-position:outside;
+}
+    /* Remove bullet when a list item contains a button/link */
+.list li:has(a.btn){ list-style: none; }
+
+/* Fallback if :has() isn't supported in some browsers */
+@supports not (selector(:has(*))) {
+  .list li { list-style: disc; }
+  .list li > a.btn { /* treat the button row specially */
+    position: relative;
+  }
+  .list li > a.btn::before { content: ""; } /* neutralise marker in some engines */
+}
+
+/* Centre the button row */
+.list li a.btn{
+  display:inline-block;
+  margin:12px auto 0;  /* centres horizontally */
+  text-align:center;
+}
+    /* Soft yellow for service/package buttons inside cards */
+.cards .card .list li a.btn{
+  background:#fff7cc;
+  border-color:#facc15;
+  color:#0b1220;
+}
+.cards .card .list li a.btn:hover{
+  background:#ffef99;
+}
+
     .price{float:right;color:#64748b}
     .footercols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
     .input{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px}
