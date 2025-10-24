@@ -585,19 +585,72 @@ h1, h2, h3, h4, h5, h6, .card strong, .section h2{
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="section container">
-  <h2>About</h2>
-  <p class="muted">
-    SecureTender exists to make tendering achievable for UK SMEs — cutting through jargon, simplifying process, and helping great businesses win the work they deserve.
-    The approach is calm, practical, and rooted in real delivery — combining structured methods with plain-English communication that works in both regulated and fast-moving environments.
-  </p>
-  <ul class="list">
-    <li>Supporting SMEs to compete confidently in public and private sector bids</li>
-    <li>Expertise across manufacturing, pharma, technology and service industries</li>
-    <li>Built on principles of clarity, credibility, and sustainable growth</li>
-    <li>Based in the North West · Remote-first · Supporting clients UK-wide</li>
-  </ul>
-</section>
+/* === ABOUT: layout + visuals === */
+.about-grid{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:24px;
+}
+@media (max-width:920px){ .about-grid{ grid-template-columns:1fr; } }
+
+/* metrics */
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:14px; margin:14px 0 18px;
+}
+@media (max-width:600px){ .metrics{ grid-template-columns:1fr 1fr; } }
+.metric{
+  background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px;
+  text-align:center; box-shadow:var(--shadow);
+}
+.metric strong{
+  display:block; font-size:clamp(22px, 4vw, 32px); line-height:1; margin-bottom:4px;
+}
+.metric span{ color:#64748b; font-size:.95rem; }
+
+/* pillars */
+.pillars{
+  display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px;
+}
+@media (max-width:600px){ .pillars{ grid-template-columns:1fr; } }
+.pillar{
+  position:relative; background:#fff; border:1px solid var(--line); border-radius:16px; padding:14px 14px 12px 54px;
+  box-shadow:var(--shadow); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.pillar:hover{ transform:translateY(-2px); box-shadow:0 14px 32px rgba(15,23,42,.10); border-color:color-mix(in srgb, var(--accent) 22%, var(--line)); }
+.pillar::before{
+  content:attr(data-emoji);
+  position:absolute; left:12px; top:12px;
+  width:32px; height:32px; border-radius:10px; display:grid; place-items:center;
+  background:#f1f5f9; border:1px solid #e5e7eb; font-size:18px;
+}
+.pillar h3{ margin:0 0 4px; font-size:1rem; }
+.pillar p{ margin:0; color:#334155; font-size:.96rem; }
+
+/* timeline */
+.timeline{
+  margin-top:10px; padding-top:24px; position:relative;
+}
+.timeline::before{
+  content:""; position:absolute; left:0; right:0; top:34px; height:4px; border-radius:2px;
+  background:linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
+}
+.milestones{
+  display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:12px;
+}
+@media (max-width:720px){ .milestones{ grid-template-columns:repeat(2, minmax(0,1fr)); row-gap:24px; } }
+.milestone{
+  text-align:center; position:relative;
+}
+.milestone .dot{
+  width:20px; height:20px; border-radius:50%; margin:0 auto 8px;
+  background:#fff; border:3px solid color-mix(in srgb, var(--accent) 70%, var(--accent2) 30%);
+  box-shadow:0 6px 16px rgba(15,23,42,.10);
+}
+.milestone strong{ display:block; font-size:.98rem; }
+.milestone span{ color:#64748b; font-size:.9rem; }
+
 
 <!-- FAQs -->
 <section id="faqs" class="section">
