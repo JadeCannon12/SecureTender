@@ -341,6 +341,20 @@ a:hover{opacity:.88}
 @supports not (selector(:has(*))) {
   .list li.no-bullet{ list-style:none !important; }
 }
+/* --- Force consistent Title Case style for headings and card titles --- */
+
+/* Capitalize the first letter of each word for main headings and strong text in cards */
+h1, h2, h3, h4, h5, h6,
+.card strong,
+.section h2 {
+  text-transform: capitalize;
+}
+
+/* Prevent small-caps or all-uppercase overrides elsewhere */
+h1, h2, h3, h4, h5, h6, .card strong {
+  font-variant: normal;
+  letter-spacing: 0.3px;
+}
 
   </style>
 </head>
