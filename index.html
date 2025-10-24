@@ -474,6 +474,111 @@ h1, h2, h3, h4, h5, h6,
   outline-offset: 2px;
   border-radius: 14px;
 }
+/* ===== Unify backgrounds (remove the colour split) ===== */
+#sectors, #results {
+  background:#fff !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+
+/* ===== Sectors tiles ===== */
+.sectors-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+  margin-top:10px;
+}
+
+.sector-card{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 10px 24px rgba(15,23,42,.06);
+  padding:18px 18px 16px 18px;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.sector-card::before{
+  content:"";
+  position:absolute;
+  left:0; top:-1px; width:100%; height:4px;
+  border-top-left-radius:inherit; border-top-right-radius:inherit;
+  background:var(--accent);
+}
+.sector-card:nth-child(2n)::before{ background:var(--accent2); }
+
+.sector-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 32px rgba(15,23,42,.10);
+  border-color:color-mix(in srgb, var(--accent) 25%, var(--line));
+}
+
+.sector-card .icon{
+  width:44px;height:44px; border-radius:12px;
+  display:grid; place-items:center;
+  background:#f1f5f9; border:1px solid #e5e7eb;
+  font-size:22px; margin-bottom:10px;
+}
+
+.sector-card h3{
+  margin:0 0 6px;
+  font-size:1.04rem; line-height:1.25; color:#0b1220;
+}
+
+.sector-card .mini{
+  margin:8px 0 0 0;
+  padding-left:1.1rem;
+  list-style-position:outside;
+  color:#334155;
+}
+.sector-card .mini li::marker{ color:var(--accent); }
+.sector-card:nth-child(2n) .mini li::marker{ color:var(--accent2); }
+
+/* ===== Testimonial quote cards ===== */
+.testimonials{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap:18px;
+  margin-top:10px;
+}
+
+.quote-card{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 10px 24px rgba(15,23,42,.06);
+  padding:18px 18px 16px 18px;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.quote-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 32px rgba(15,23,42,.10);
+  border-color:color-mix(in srgb, var(--accent) 25%, var(--line));
+}
+
+.quote-card blockquote{
+  margin:0;
+  color:#0b1220;
+  line-height:1.55;
+  position:relative;
+  padding-left:34px;
+}
+
+.quote-card blockquote::before{
+  content:"“";
+  position:absolute; left:0; top:-8px;
+  font-size:42px; line-height:1;
+  color:color-mix(in srgb, var(--accent) 35%, #c7d2fe);
+}
+
+.quote-card figcaption{
+  margin-top:10px;
+  color:#64748b;
+  font-size:.92rem;
+}
 
     
 </style>
@@ -638,23 +743,66 @@ h1, h2, h3, h4, h5, h6,
 <!-- SECTORS -->
 <section id="sectors" class="section container">
   <h2>Sectors</h2>
-  <div class="grid cards">
-    <div class="card"><strong>Manufacturing & Engineering</strong><p class="note">Local authority frameworks, supply & install, maintenance.</p></div>
-    <div class="card"><strong>Pharma/CDMO & Health</strong><p class="note">Quality‑led responses, data/security, validation‑aware.</p></div>
-    <div class="card"><strong>Construction & FM</strong><p class="note">Method statements, risk, social value, site logistics.</p></div>
-    <div class="card"><strong>IT & Digital</strong><p class="note">Service description, SLAs, onboarding, support.</p></div>
+  <p class="muted">Strength in regulated and technical bids where clarity and compliance matter.</p>
+
+  <div class="sectors-grid">
+    <article class="sector-card">
+      <div class="icon">🏭</div>
+      <h3>Manufacturing & Engineering</h3>
+      <ul class="mini">
+        <li>Local authority frameworks</li>
+        <li>Supply & install, maintenance</li>
+      </ul>
+    </article>
+
+    <article class="sector-card">
+      <div class="icon">🧪</div>
+      <h3>Pharma/CDMO & Health</h3>
+      <ul class="mini">
+        <li>Quality-led responses, data/security</li>
+        <li>Validation-aware delivery</li>
+      </ul>
+    </article>
+
+    <article class="sector-card">
+      <div class="icon">🏗️</div>
+      <h3>Construction & FM</h3>
+      <ul class="mini">
+        <li>Method statements & risk</li>
+        <li>Social value, site logistics</li>
+      </ul>
+    </article>
+
+    <article class="sector-card">
+      <div class="icon">💻</div>
+      <h3>IT & Digital</h3>
+      <ul class="mini">
+        <li>Service description & SLAs</li>
+        <li>Onboarding and support</li>
+      </ul>
+    </article>
+  </div>
+</section>
+<section id="results" class="section container">
+  <h2>What Clients Say</h2>
+  <div class="testimonials">
+    <figure class="quote-card">
+      <blockquote>Clear, scored answers mapped to criteria.</blockquote>
+      <figcaption>COO, Manufacturing SME</figcaption>
+    </figure>
+
+    <figure class="quote-card">
+      <blockquote>Mobilised under pressure and hit a tough deadline.</blockquote>
+      <figcaption>Programme Lead, Public Sector Supplier</figcaption>
+    </figure>
+
+    <figure class="quote-card">
+      <blockquote>Social Value we can actually deliver.</blockquote>
+      <figcaption>Director, Construction SME</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- RESULTS -->
-<section id="results" class="section container">
-  <h2>What clients say</h2>
-  <ul class="list">
-    <li>“Clear, scored answers mapped to criteria.”</li>
-    <li>“Mobilised under pressure and hit a tough deadline.”</li>
-    <li>“Social Value we can actually deliver.”</li>
-  </ul>
-</section>
 
 <!-- ABOUT -->
 <section id="about" class="section container">
