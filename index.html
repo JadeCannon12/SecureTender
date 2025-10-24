@@ -533,6 +533,85 @@ h1, h2, h3, h4, h5, h6,
   color:color-mix(in srgb, var(--accent) 35%, #c7d2fe);
 }
 .quote-card figcaption{ margin-top:10px; color:#64748b; font-size:.92rem; }
+
+   /* ===== FAQ — stable, no wobble ===== */
+.faq{
+  display:grid;
+  gap:12px;
+  margin-top:14px;
+}
+
+/* Keep size stable; avoid translateY jumps */
+.faq-item{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 8px 20px rgba(15,23,42,.05);
+  overflow:hidden;
+  transition: box-shadow .2s ease, border-color .2s ease;
+  will-change: box-shadow;
+}
+.faq-item:hover{ box-shadow:0 12px 28px rgba(15,23,42,.08); }
+
+/* Use the same border in both states to prevent 1px jumps */
+.faq-item .faq-body{
+  border-top:1px dashed transparent;  /* present even when closed */
+}
+.faq-item[open] .faq-body{
+  border-top-color:#e5e7eb;           /* only the color changes */
+}
+
+/* Summary is a fixed grid: [icon | text | arrow] */
+.faq-item summary{
+  list-style:none;                     /* no default marker */
+  cursor:pointer;
+  padding:16px 18px;
+  display:grid;
+  grid-template-columns:36px 1fr 16px;
+  align-items:center;
+  gap:12px;
+  font-weight:700;
+  color:#0b1220;
+}
+.faq-item summary::-webkit-details-marker{ display:none; }
+
+/* Left icon stays the same size (no reflow) */
+.faq-item summary::before{
+  content:"❓";
+  width:36px; height:36px;
+  display:grid; place-items:center;
+  border-radius:10px;
+  background:#f1f5f9;
+  border:1px solid #e5e7eb;
+  font-size:18px;
+}
+
+/* Right arrow occupies fixed 16×16 box, only rotates (no width change) */
+.faq-item summary::after{
+  content:"";
+  width:10px; height:10px;
+  justify-self:end;
+  border-right:2px solid #0b1220;
+  border-bottom:2px solid #0b1220;
+  transform:rotate(-45deg);
+  transition: transform .2s ease;
+}
+.faq-item[open] summary::after{ transform:rotate(45deg); }
+
+/* Body text never nudges the summary; keep padding consistent */
+.faq-body{
+  padding:12px 18px 16px 70px; /* left indents under the icon */
+  color:#334155;
+  line-height:1.6;
+}
+
+/* Accessibility focus without shifting layout */
+.faq-item summary:focus-visible{
+  outline:3px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  outline-offset:2px;
+  border-radius:14px;
+}
+
 </style>
 
 </head>
