@@ -7,16 +7,48 @@
   <meta name="description" content="Plain‑English tender and bid writing for UK SMEs. Go/No‑Go triage, end‑to‑end drafting, Social Value, portals (Atamis, Jaggaer, Proactis, Bravo, Delta). Free bid review." />
   <link rel="icon" href="data:,">
   <style>
-    :root{
-      --ink:#0f172a; /* slate-900 */
-      --muted:#475569; /* slate-600 */
-      --line:#e5e7eb; /* slate-200 */
-      --bg:#ffffff;
-      --accent:#111827;
-      --radius:18px;
-      --shadow:0 6px 20px rgba(15,23,42,.06);
-      --max:1100px;
-    }
+   :root{
+  --ink:#0b1220;          /* text (navy) */
+  --muted:#475569;        /* secondary text */
+  --line:#e5e7eb;         /* borders */
+  --bg:#ffffff;           /* page background */
+
+  /* New accent palette */
+  --accent:#2563eb;       /* BLUE (primary) */
+  --accent-ink:#ffffff;   /* text on blue */
+  --accent2:#10b981;      /* GREEN (success) */
+  --accent2-ink:#06281e;  /* dark teal text if needed */
+
+  --radius:18px;
+  --shadow:0 6px 20px rgba(15,23,42,.06);
+  --max:1100px;
+}
+    /* Buttons */
+.btn{display:inline-block;padding:11px 16px;border-radius:999px;border:1px solid var(--ink);text-decoration:none;transition:.2s}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(0.92)}
+.btn.success{background:var(--accent2);color:#fff;border-color:var(--accent2)}
+.btn.success:hover{filter:brightness(0.92)}
+.btn.ghost{border-color:#cbd5e1;color:var(--ink)}
+.btn.ghost:hover{background:#f1f5f9}
+
+/* Hero with soft gradient */
+.hero{padding:56px 20px; background:linear-gradient(180deg,#e0f2fe 0%, #f0fff4 100%); border-bottom:1px solid var(--line)}
+
+/* Chips use accents */
+.tag{display:inline-block;margin-right:6px;font-size:12px;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:6px 10px;background:#fff}
+.tag.alt{color:var(--accent2);border-color:var(--accent2)}
+
+/* Cards get coloured top borders for a bit of life */
+.card{border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:#fff;box-shadow:var(--shadow);position:relative}
+.card::before{content:\"\";position:absolute;left:0;top:-1px;height:4px;width:100%;border-top-left-radius:inherit;border-top-right-radius:inherit;background:var(--accent)}
+/* alternate every other card to green */
+.cards .card:nth-child(2n)::before{background:var(--accent2)}
+
+/* Section alternates (optional, if you add class=\"section alt\" in HTML) */
+.section.alt{background:#f8fafc;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:36px 0}
+.section .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
     *{box-sizing:border-box}
     body{margin:0;font:16px system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;color:var(--ink);background:var(--bg)}
     a{color:var(--ink)}
@@ -61,7 +93,7 @@
         <a href="#sectors">Sectors</a>
         <a href="#about">About</a>
         <a href="#faqs">FAQs</a>
-        <a class="btn" href="#contact">Free bid review</a>
+        <a class="btn success" href="#contact">Free bid review</a>
       </nav>
     </header>
   </div>
@@ -98,7 +130,7 @@
 </section>
 
 <!-- PACKAGES -->
-<section id="packages" class="section container">
+<section id="packages" class="section alt"><div class="container">
   <h2>Packages & pricing</h2>
   <div class="grid cards">
     <div class="card">
@@ -115,7 +147,7 @@
     </div>
   </div>
   <p class="note">Day rate (capped): £450–£600. Optional success‑fee add‑on (public sector) by agreement. Prices exclude VAT.</p>
-</section>
+</div></section>
 
 <!-- PROCESS -->
 <section id="process" class="section container">
