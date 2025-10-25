@@ -99,6 +99,84 @@ header .logo, .logo{ font-family:'Poppins','Segoe UI',sans-serif; font-weight:70
 .svc-list li{ position:relative; padding-left:26px }
 .svc-list li::before{ content:""; position:absolute; left:0; top:.4em; width:16px; height:16px; border-radius:50%; background:radial-gradient(circle at 60% 40%, #fff 40%, #fff0 41%), var(--rail); box-shadow:0 0 0 2px #e5f4ff inset }
 .svc-cta{ margin-top:auto } .svc-cta .btn{ width:auto }
+/* === Service Cards Refined === */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.svc-card {
+  position: relative;
+  background: #fff;
+  border-radius: 18px;
+  padding: 22px 24px;
+  box-shadow: 0 10px 24px rgba(15,23,42,.06);
+  border-top: 6px solid var(--accent);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.svc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(15,23,42,.10);
+}
+
+.svc-card.accent-green { border-top-color: var(--accent2); }
+.svc-card.accent-blue { border-top-color: var(--accent); }
+
+.svc-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.svc-card p {
+  color: #334155;
+  margin-bottom: 10px;
+}
+
+.svc-card ul {
+  margin: 0 0 14px 1rem;
+  color: #475569;
+}
+
+.price-box {
+  text-align: left;
+  margin: 10px 0 16px;
+}
+
+.price-box strong {
+  display: block;
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+
+.price-box span {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 30px;
+  background: var(--accent);
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background .2s ease;
+}
+
+.accent-green .btn { background: var(--accent2); }
+.btn:hover { opacity: .9; }
+
+.smallprint {
+  margin-top: 1rem;
+  text-align: center;
+  color: #64748b;
+}
 
 /* ===============================
    How It Works (uniform + rich)
@@ -438,23 +516,28 @@ h1, h2, h3, h4, h5, h6, .card strong, .section h2{ text-transform:capitalize; fo
 <!-- SERVICES -->
 <section id="services" class="section container">
   <h2>Services</h2>
-  <p class="muted">Straightforward support for UK SMEs — whether you need a quick rescue, a fully managed bid, or help building long-term capability.</p>
+  <p class="muted">
+    Straightforward support for UK SMEs — whether you need a quick rescue, a fully managed bid, or help building long-term capability.
+  </p>
 
   <div class="svc-grid">
-    <div class="svc-card">
-      <div class="svc-rail" style="background:var(--accent2)"></div>
+    <!-- Quick Support -->
+    <div class="svc-card accent-green">
       <h3>Quick Support</h3>
       <p>48-hour bid review or rescue — ideal for urgent deadlines.</p>
       <ul>
         <li>Go/No-Go readiness check</li>
         <li>Score uplift and feedback advice</li>
       </ul>
-      <p><strong>£450 – £650</strong><br><small>Full payment upfront</small></p>
+      <div class="price-box">
+        <strong>£450 – £650</strong>
+        <span>Full payment upfront</span>
+      </div>
       <a href="#contact" class="btn">Need urgent help</a>
     </div>
 
-    <div class="svc-card">
-      <div class="svc-rail" style="background:var(--accent)"></div>
+    <!-- Full Bid Writing -->
+    <div class="svc-card accent-blue">
       <h3>Full Bid Writing</h3>
       <p>End-to-end drafting and submission support to maximise your win rate.</p>
       <ul>
@@ -462,12 +545,15 @@ h1, h2, h3, h4, h5, h6, .card strong, .section h2{ text-transform:capitalize; fo
         <li>Drafting and scoring criteria alignment</li>
         <li>Social value and policies covered</li>
       </ul>
-      <p><strong>£1,200 – £2,000</strong><br><small>50% deposit · 50% before submission</small></p>
+      <div class="price-box">
+        <strong>£1,200 – £2,000</strong>
+        <span>50% deposit · 50% before submission</span>
+      </div>
       <a href="#contact" class="btn">Start my bid</a>
     </div>
 
-    <div class="svc-card">
-      <div class="svc-rail" style="background:var(--accent2)"></div>
+    <!-- Build Capability -->
+    <div class="svc-card accent-green">
       <h3>Build Capability</h3>
       <p>Train your team or set up toolkits to manage bids in-house.</p>
       <ul>
@@ -475,14 +561,19 @@ h1, h2, h3, h4, h5, h6, .card strong, .section h2{ text-transform:capitalize; fo
         <li>Templates, trackers and policy packs</li>
         <li>Answer bank and pipeline setup</li>
       </ul>
-      <p><strong>£600 – £950</strong><br><small>50% deposit · balance before delivery</small></p>
+      <div class="price-box">
+        <strong>£600 – £950</strong>
+        <span>50% deposit · balance before delivery</span>
+      </div>
       <a href="#contact" class="btn">Train my team</a>
     </div>
   </div>
-  <p class="muted" style="margin-top:1rem;">
-  <small>All prices exclude VAT. Work begins on receipt of deposit payment. Payment accepted by bank transfer or card.</small>
-</p>
+
+  <p class="muted smallprint">
+    <small>All prices exclude VAT. Work begins once deposit payment is received. Payments accepted by bank transfer or card.</small>
+  </p>
 </section>
+
 
 
 <!-- HOW IT WORKS -->
