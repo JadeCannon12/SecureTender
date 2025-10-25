@@ -561,33 +561,90 @@ h1, h2, h3, h4, h5, h6, .card strong, .section h2{ text-transform:capitalize; fo
 <!-- CONTACT -->
 <section id="contact" class="section container">
   <h2>Get in touch</h2>
-  <p class="muted">Whether you’d like a bid review, proposal support, or just an honest conversation about how we can help — send a few details and we’ll get straight back to you.</p>
-
- <form action="https://formspree.io/f/mqagzakb" method="POST">
-  <div class="grid" style="display:grid;gap:16px;grid-template-columns:1fr 1fr;">
-    <div><input class="input" name="name" placeholder="Name*" required></div>
-    <div><input class="input" name="company" placeholder="Company*" required></div>
-    <div><input class="input" name="_replyto" type="email" placeholder="Email*" required></div>
-    <div><input class="input" name="url" type="url" placeholder="Opportunity URL (if relevant)"></div>
-    <div><input class="input" name="deadline" type="date" placeholder="Deadline"></div>
-    <div><textarea class="input" name="message" placeholder="How can we help?" rows="3" required></textarea></div>
-  </div>
-
-  <p class="note" style="font-size:13px;color:#64748b;margin-top:6px">
-    <em>Tip:</em> We’ll reply within 1 business day.
+  <p class="muted">
+    Whether you’d like a bid review, proposal support, or just an honest conversation about how we can help — send a few details and we’ll get straight back to you.
   </p>
 
-  <p class="row" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-    <button class="btn primary" type="submit">Send enquiry</button>
-    <a class="btn ghost" href="#">Book a call</a>
-    <input type="hidden" name="_redirect" value="https://securetender.co.uk/thank-you">
+  <!-- Formspree form -->
+  <form id="contact-form" action="https://formspree.io/f/mqagzakb" method="POST" accept-charset="UTF-8">
+    <div class="grid" style="display:grid;gap:16px;grid-template-columns:1fr 1fr;">
+      <div>
+        <input class="input" name="name" placeholder="Name*" autocomplete="name" required>
+      </div>
+      <div>
+        <input class="input" name="company" placeholder="Company*" required>
+      </div>
+      <div>
+        <input class="input" type="email" name="email" placeholder="Email*" autocomplete="email" required>
+      </div>
+      <div>
+        <input class="input" type="url" name="opportunity_url" placeholder="Opportunity URL (if relevant)">
+      </div>
+      <div>
+  <input class="input" type="tel" name="phone" placeholder="Phone (optional)" autocomplete="tel">
+</div>
+      <div style="grid-column:1 / -1">
+        <textarea class="input" name="message" placeholder="How can we help?" rows="5" required></textarea>
+      </div>
+    </div>
 
+    <!-- Honeypot (spam trap) -->
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+           style="position:absolute;left:-5000px;height:1px;width:1px;opacity:0" aria-hidden="true">
+
+    <!-- Optional extras for nicer emails -->
+    <input type="hidden" name="_subject" value="SecureTender website enquiry">
+    <input type="hidden" name="_template" value="table">
+
+    <p id="contact-status" class="note" style="margin:10px 0 0;color:#334155;"></p>
+
+    <p class="row" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+      <button class="btn primary" type="submit">Send enquiry</button>
+
+      <!-- Simple mailto for booking a call -->
+      <a class="btn ghost"
+         href="mailto:info@securetender.co.uk?subject=Request%20a%20call&body=Hi%20SecureTender%20Team%2C%0A%0ACould%20we%20book%20a%20quick%20call%3F%0A%0AMy%20name%3A%0ACompany%3A%0APreferred%20times%3A%0A%0AThanks!">
+        Book a call
+      </a>
+    </p>
+  </form>
+
+  <p class="note" style="font-size:13px;color:#64748b;margin-top:10px">
+    Email: info@securetender.co.uk · Phone: +44 (0)xxx xxxx xxx
   </p>
-</form>
-
-
-  <p class="note" style="font-size:13px;color:#64748b;margin-top:6px">Email: info@securetender.co.uk · Phone: +44 (0)xxx xxxx xxx</p>
 </section>
+
+<script>
+  // Lightweight AJAX submit to Formspree with inline status message
+  (function () {
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('contact-status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = 'Sending…';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          status.style.color = '#0f766e'; // teal
+          status.textContent = 'Thanks — we’ll reply within one business day.';
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      } catch (err) {
+        status.style.color = '#b91c1c'; // red
+        status.textContent = 'Sorry, something went wrong. Please email info@securetender.co.uk.';
+      }
+    });
+  })();
+</script>
 
 <!-- FOOTER -->
 <div style="border-top:1px solid var(--line);background:#f8fafc">
